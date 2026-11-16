@@ -159,7 +159,6 @@ off-screen. Each scene has an `sr-only` text description; illustrations are
 ## Before launch: placeholders and TODOs
 
 - [ ] Final product name → `config.productName` (currently the placeholder "Headroom").
-- [ ] Company name for the footer → `config.companyName` (currently `[Company]`).
 - [ ] Production URL → `config.siteUrl` (canonical + Open Graph; currently `https://example.com`).
 - [ ] Privacy policy and contact links → `config.links` (currently `#`).
 - [ ] Create `public/og-image.png` (1200×630) and delete `public/og-image.txt`.

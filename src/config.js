@@ -6,7 +6,7 @@
  */
 export const config = {
   productName: 'Headroom', // Working name — placeholder.
-  companyName: '[Company]', // TODO: legal company name for the footer.
+  companyName: 'Qbatch',
   copyrightYear: 2026,
 
   // Absolute production URL, used for canonical and Open Graph tags.
