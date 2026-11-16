@@ -1,0 +1,7 @@
+TODO before launch: replace this note with public/og-image.png (1200 × 630 px).
+
+index.html's Open Graph and Twitter tags already point to /og-image.png
+(made absolute with config.siteUrl in src/config.js). Suggested content:
+the product name, the line "Private AI that just works on the Mac you
+already own", and the app window from the hero on a plain background.
+Keep it honest: no Apple logos, no ratings, no invented numbers.

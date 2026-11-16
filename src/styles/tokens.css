@@ -1,0 +1,135 @@
+/* Design tokens. One calm accent (teal-green = "fits safely"), used only for
+   CTAs, highlights and progress. Dark theme follows prefers-color-scheme. */
+
+:root {
+  color-scheme: light dark;
+
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", system-ui, sans-serif;
+  --font-text: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, monospace;
+
+  --fs-display: clamp(3rem, 1.6rem + 5.6vw, 5.5rem);   /* 48 → 88 */
+  --fs-h2: clamp(2.5rem, 1.5rem + 3.6vw, 4rem);         /* 40 → 64 */
+  --fs-h3: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);      /* 20 → 24 */
+  --fs-lead: clamp(1.1875rem, 1.05rem + 0.55vw, 1.4375rem);
+  --fs-body: 1.125rem;  /* 18 */
+  --fs-small: 0.9375rem; /* 15 */
+  --fs-xs: 0.8125rem;    /* 13 */
+  --lh-body: 1.6;
+  --lh-tight: 1.04;
+  --tracking-display: -0.02em;
+
+  /* 8-pt spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3rem;
+  --space-9: 4rem;
+  --space-10: 5rem;
+  --space-section: clamp(5rem, 3rem + 7vw, 10rem); /* 80 mobile → 160 desktop */
+
+  --max-width: 1200px;
+  --gutter: clamp(1rem, 0.5rem + 2.5vw, 2.5rem);
+  --header-h: 64px;
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-window: 16px;
+  --radius-pill: 999px;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 200ms;
+  --dur-med: 400ms;
+  --dur-slow: 700ms;
+  --stagger: 70ms;
+
+  /* Light palette */
+  --bg: #fbfbf9;
+  --bg-elev: #ffffff;
+  --bg-sunken: #f2f3f0;
+  --bg-glass: rgba(255, 255, 255, 0.72);
+  --ink: #0e1012;
+  --ink-2: #464b51;
+  --ink-3: #676d74;
+  --line: rgba(14, 16, 18, 0.1);
+  --line-strong: rgba(14, 16, 18, 0.18);
+
+  --accent: #0b7a63;
+  --accent-hover: #086652;
+  --accent-ink: #ffffff;
+  --accent-soft: rgba(11, 122, 99, 0.1);
+  --accent-line: rgba(11, 122, 99, 0.35);
+  --accent-glow-1: rgba(20, 168, 130, 0.32);
+  --accent-glow-2: rgba(70, 190, 160, 0.24);
+  --accent-glow-3: rgba(140, 210, 170, 0.28);
+
+  /* Memory-bar segments (Scene 4) */
+  --seg-os: #aeb3ad;
+  --seg-apps: #d3d6d1;
+  --seg-model: #2b3035;
+
+  --danger: #b42318;
+
+  --light-red: #ff5f57;
+  --light-yellow: #febc2e;
+  --light-green: #28c840;
+
+  --shadow-sm: 0 1px 1px rgba(14, 16, 18, 0.04), 0 2px 6px rgba(14, 16, 18, 0.05);
+  --shadow-md: 0 1px 1px rgba(14, 16, 18, 0.04), 0 4px 10px rgba(14, 16, 18, 0.05), 0 16px 32px rgba(14, 16, 18, 0.06);
+  --shadow-window:
+    0 0 0 1px rgba(14, 16, 18, 0.06),
+    0 1px 1px rgba(14, 16, 18, 0.04),
+    0 6px 14px rgba(14, 16, 18, 0.06),
+    0 24px 48px rgba(14, 16, 18, 0.08),
+    0 56px 96px rgba(14, 16, 18, 0.1);
+
+  --noise-opacity: 0.035;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0a0b0c;
+    --bg-elev: #15171a;
+    --bg-sunken: #101214;
+    --bg-glass: rgba(21, 23, 26, 0.72);
+    --ink: #f2f3f1;
+    --ink-2: #b0b5ba;
+    --ink-3: #8b9197;
+    --line: rgba(255, 255, 255, 0.09);
+    --line-strong: rgba(255, 255, 255, 0.16);
+
+    --accent: #3ccfa8;
+    --accent-hover: #5fdcbb;
+    --accent-ink: #03241c;
+    --accent-soft: rgba(60, 207, 168, 0.12);
+    --accent-line: rgba(60, 207, 168, 0.4);
+    --accent-glow-1: rgba(40, 190, 150, 0.22);
+    --accent-glow-2: rgba(30, 140, 120, 0.2);
+    --accent-glow-3: rgba(90, 200, 160, 0.14);
+
+    --seg-os: #5d646b;
+    --seg-apps: #393e44;
+    --seg-model: #d9dcd8;
+
+    --danger: #ff8a7a;
+
+    --shadow-sm: 0 1px 1px rgba(0, 0, 0, 0.3), 0 2px 6px rgba(0, 0, 0, 0.25);
+    --shadow-md: 0 1px 1px rgba(0, 0, 0, 0.3), 0 4px 10px rgba(0, 0, 0, 0.3), 0 16px 32px rgba(0, 0, 0, 0.35);
+    --shadow-window:
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 1px 1px rgba(0, 0, 0, 0.3),
+      0 6px 14px rgba(0, 0, 0, 0.3),
+      0 24px 48px rgba(0, 0, 0, 0.4),
+      0 56px 96px rgba(0, 0, 0, 0.45);
+
+    --noise-opacity: 0.05;
+  }
+}

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <!-- render:head -->
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#fbfbf9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0a0b0c" media="(prefers-color-scheme: dark)" />
+    <!-- Marks JS as available before first paint, so motion start-states never flash. -->
+    <script>document.documentElement.classList.add('js');</script>
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main"><!-- render:skipLink --></a>
+    <div class="scroll-sentinel" aria-hidden="true"></div>
+    <!-- render:header -->
+
+    <main id="main" tabindex="-1">
+      <section id="top" class="hero" data-scene="hero" aria-labelledby="hero-title">
+        <!-- render:hero -->
+      </section>
+
+      <section id="problem" class="section problem" data-scene="jargon" aria-labelledby="problem-title">
+        <!-- render:problem -->
+      </section>
+
+      <section id="how" class="section journey" data-scene="journey" aria-labelledby="how-title">
+        <!-- render:journey -->
+      </section>
+
+      <section id="demo" class="section demo" data-scene="demo" aria-labelledby="demo-title">
+        <!-- render:demo -->
+      </section>
+
+      <section id="features" class="section pillars" data-scene="pillars" aria-labelledby="features-title">
+        <!-- render:pillars -->
+      </section>
+
+      <section id="privacy" class="section privacy" data-scene="privacy" aria-labelledby="privacy-title">
+        <!-- render:privacy -->
+      </section>
+
+      <section id="who" class="section personas" aria-labelledby="who-title">
+        <!-- render:personas -->
+      </section>
+
+      <section id="pricing" class="section pricing" aria-labelledby="pricing-title">
+        <!-- render:pricing -->
+      </section>
+
+      <section id="faq" class="section faq" aria-labelledby="faq-title">
+        <!-- render:faq -->
+      </section>
+
+      <section id="waitlist" class="section cta" data-scene="cta" aria-labelledby="waitlist-title">
+        <!-- render:waitlist -->
+      </section>
+    </main>
+
+    <!-- render:footer -->
+  </body>
+</html>
