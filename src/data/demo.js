@@ -3,6 +3,7 @@
  * to expect. Deliberately conservative and rounded. These are illustrations,
  * not measurements; the app itself measures the visitor's actual Mac.
  */
+import { content } from '../content.js';
 
 export const memorySizes = [8, 16, 24, 32, 64];
 export const defaultMemory = 16;
@@ -47,15 +48,56 @@ const caveat = {
   '8:summarise': ' Best with shorter documents; 16 GB or more handles long ones.',
 };
 
+/**
+ * The shortlist the app might offer: three sizes, up to the model shown in
+ * the bar (option C). Shares are of that model's footprint. Speeds are
+ * deliberately loose, plain-language ranges, not measurements.
+ */
+const candidates = [
+  { id: 'A', share: 0.45, style: 'Quick and light', starts: 'about 1 second', pace: 'faster than you read' },
+  { id: 'B', share: 0.75, style: 'Balanced', starts: 'about 1–2 seconds', pace: 'keeps up with your reading' },
+  { id: 'C', share: 1, style: 'Most thorough', starts: 'about 2–3 seconds', pace: 'about your reading speed' },
+];
+
+/** Files on disk are a little smaller than the memory they use while running. */
+const DOWNLOAD_RATIO = 0.85;
+
 const roundHalf = (n) => Math.round(n * 2) / 2;
+
+/** "about 4.5 GB", or "under 1 GB" for small amounts. */
+export const formatGb = (gb) => (gb < 1 ? content.demo.amountSmall : content.demo.amount.replace('{n}', gb));
+const modelGb = (memory, job) => roundHalf(modelSize[memory] * (jobWeight[job] ?? 1));
 
 /**
  * @returns {{ total:number, segments:{os:number, apps:number, model:number, headroom:number}, sentence:string }}
  */
 export function getEstimate(memory, job) {
   const { os, apps } = baseline[memory];
-  const model = roundHalf(modelSize[memory] * (jobWeight[job] ?? 1));
+  const model = modelGb(memory, job);
   const headroom = roundHalf(memory - os - apps - model);
   const sentence = outcome[memory].replace('{helper}', helper[job]) + (caveat[`${memory}:${job}`] ?? '');
   return { total: memory, segments: { os, apps, model, headroom }, sentence };
 }
+
+/**
+ * @returns {{ id:string, style:string, download:number, starts:string, pace:string, roomLeft:number }[]}
+ */
+export function getShortlist(memory, job) {
+  const { os, apps } = baseline[memory];
+  const top = modelGb(memory, job);
+  return candidates.map(({ id, share, style, starts, pace }) => {
+    const used = roundHalf(top * share);
+    return {
+      id,
+      style,
+      starts,
+      pace,
+      download: roundHalf(used * DOWNLOAD_RATIO),
+      roomLeft: roundHalf(memory - os - apps - used),
+    };
+  });
+}
+
+/** Display text for one shortlist cell (sizes formatted, phrases as-is). */
+export const shortlistCell = (option, key) =>
+  key === 'download' || key === 'roomLeft' ? formatGb(option[key]) : option[key];

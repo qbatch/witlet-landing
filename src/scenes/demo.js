@@ -3,12 +3,12 @@
  * drive a memory bar split into macOS / your apps / AI model / headroom.
  * Blocks move and resize with transforms only (translateX + scaleX from
  * the left edge). The result sentence cross-fades and is announced via
- * aria-live. On first view the bar builds up block by block.
+ * aria-live. On first view the bar builds up block by block. The shortlist
+ * table below refreshes its cells and its rows settle in with a short fade.
  * Reduced motion: same interaction, instant changes.
  */
-import { content } from '../content.js';
 import { initSegmented } from '../components/segmented.js';
-import { defaultJob, defaultMemory, getEstimate } from '../data/demo.js';
+import { defaultJob, defaultMemory, formatGb, getEstimate, getShortlist, shortlistCell } from '../data/demo.js';
 import { qs, qsa } from '../lib/dom.js';
 import { DUR, GSAP_EASE, STAGGER, observeVisibility, prefersReducedMotion } from '../lib/motion.js';
 import { gsap } from '../lib/tween.js';
@@ -25,6 +25,7 @@ export function init(root) {
   const [memoryGroup, jobGroup] = qsa('[role="radiogroup"]', root);
   const state = { memory: defaultMemory, job: defaultJob };
   let sentence = qs('p', sentenceBox);
+  const rows = qsa('.shortlist-table tbody tr', root);
 
   /** Start (percent of the bar) and share (0–1) for every block. */
   const layout = (est) => {
@@ -63,11 +64,25 @@ export function init(root) {
     gsap.fromTo(sentence, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: DUR.med, ease: GSAP_EASE, delay: 0.1 });
   };
 
+  const updateShortlist = () => {
+    getShortlist(state.memory, state.job).forEach((option, i) => {
+      qsa('[data-cell]', rows[i]).forEach((cell) => (cell.textContent = shortlistCell(option, cell.dataset.cell)));
+    });
+    if (!reduce) {
+      gsap.fromTo(
+        rows,
+        { autoAlpha: 0.35, y: 4 },
+        { autoAlpha: 1, y: 0, duration: DUR.med, stagger: STAGGER, ease: GSAP_EASE, overwrite: 'auto' },
+      );
+    }
+  };
+
   const render = () => {
     const est = getEstimate(state.memory, state.job);
     moveBlocks(est);
-    ORDER.forEach((key) => (values[key].textContent = content.demo.amount.replace('{n}', est.segments[key])));
+    ORDER.forEach((key) => (values[key].textContent = formatGb(est.segments[key])));
     swapSentence(est.sentence);
+    updateShortlist();
   };
 
   // Take over the pre-rendered inline transforms with GSAP's own values.

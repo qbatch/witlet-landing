@@ -2,7 +2,7 @@
 import { content, jobs } from '../content.js';
 import { accordionMarkup } from '../components/accordion.js';
 import { segmentedMarkup } from '../components/segmented.js';
-import { defaultJob, defaultMemory, getEstimate, memorySizes } from '../data/demo.js';
+import { defaultJob, defaultMemory, formatGb, getEstimate, getShortlist, memorySizes, shortlistCell } from '../data/demo.js';
 import { esc } from '../lib/dom.js';
 import { icon } from './icons.js';
 import { heroVisual, jargonVisual, journeyWindow, privacyWindow } from './visuals.js';
@@ -114,7 +114,7 @@ export function demo() {
       <li class="legend-item legend-item--${key}" data-legend="${key}">
         <span class="swatch" aria-hidden="true"></span>
         <span class="legend-name">${esc(d.segments[key])}</span>
-        <span class="legend-value">${esc(d.amount.replace('{n}', gb))}</span>
+        <span class="legend-value">${esc(formatGb(gb))}</span>
       </li>`,
     )
     .join('');
@@ -153,7 +153,46 @@ export function demo() {
           </div>
           <p class="demo-note">${esc(d.note)} <span class="muted">${esc(d.hint)}</span></p>
         </div>
+        ${shortlistTable()}
       </div>
+    </div>`;
+}
+
+/**
+ * The shortlist table under the demo. Explicit ARIA roles keep table
+ * semantics when CSS turns rows into cards on small screens.
+ */
+function shortlistTable() {
+  const s = content.demo.shortlist;
+  const keys = ['style', 'download', 'starts', 'pace', 'roomLeft'];
+  const rows = getShortlist(defaultMemory, defaultJob)
+    .map(
+      (row) => `
+      <tr role="row" data-option="${row.id}">
+        <th role="rowheader" scope="row">
+          <span class="letter" aria-hidden="true">${row.id}</span><span class="sr-only">${esc(s.option.replace('{id}', row.id))}</span>
+        </th>
+        ${keys
+          .map((key) => `<td role="cell" data-cell="${key}" data-label="${esc(s.columns[key])}">${esc(shortlistCell(row, key))}</td>`)
+          .join('')}
+      </tr>`,
+    )
+    .join('');
+  return `
+    <div class="demo-shortlist">
+      <table class="shortlist-table" role="table" aria-labelledby="demo-shortlist-title" aria-describedby="demo-shortlist-note">
+        <caption>
+          <span class="control-label" id="demo-shortlist-title">${esc(s.title)}</span>
+          <span class="shortlist-caption-note" id="demo-shortlist-note">${esc(s.note)}</span>
+        </caption>
+        <thead role="rowgroup">
+          <tr role="row">
+            <th role="columnheader" scope="col">${esc(s.columns.option)}</th>
+            ${keys.map((key) => `<th role="columnheader" scope="col">${esc(s.columns[key])}</th>`).join('')}
+          </tr>
+        </thead>
+        <tbody role="rowgroup">${rows}</tbody>
+      </table>
     </div>`;
 }
 

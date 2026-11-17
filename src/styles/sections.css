@@ -1508,6 +1508,134 @@
   background: var(--accent);
 }
 
+/* Shortlist table: full width under the demo; cards on small screens. */
+.demo-shortlist {
+  grid-column: 1 / -1;
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--line);
+}
+
+.shortlist-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+  font-variant-numeric: tabular-nums;
+}
+
+.shortlist-table caption {
+  caption-side: top;
+  margin-bottom: var(--space-4);
+  text-align: left;
+}
+
+.shortlist-table caption .control-label {
+  display: block;
+  margin-bottom: var(--space-1);
+}
+
+.shortlist-caption-note {
+  display: block;
+  max-width: 44rem;
+  font-size: var(--fs-small);
+  color: var(--ink-3);
+}
+
+.shortlist-table th,
+.shortlist-table td {
+  padding: 14px 16px;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+}
+
+.shortlist-table thead th {
+  padding-top: 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+
+.shortlist-table tbody th {
+  width: 1%;
+  padding-left: 0;
+}
+
+.shortlist-table thead th:first-child {
+  padding-left: 0;
+}
+
+.shortlist-table tbody tr:last-child > * {
+  border-bottom: 0;
+}
+
+.shortlist-table [data-cell="style"] {
+  font-weight: 600;
+}
+
+.shortlist-table [data-cell="roomLeft"] {
+  color: var(--accent);
+  font-weight: 650;
+}
+
+@media (max-width: 759px) {
+  .shortlist-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+
+  .shortlist-table tbody {
+    display: grid;
+    gap: var(--space-3);
+  }
+
+  .shortlist-table tbody tr {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-3) var(--space-4);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    background: var(--bg-sunken);
+    box-shadow: inset 0 0 0 1px var(--line);
+  }
+
+  .shortlist-table tbody th,
+  .shortlist-table td {
+    display: block;
+    width: auto;
+    padding: 0;
+    border: 0;
+  }
+
+  .shortlist-table tbody th {
+    grid-column: 1 / -1;
+  }
+
+  .shortlist-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 2px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-3);
+  }
+
+  /* Sit the style name beside the 22px letter badge on the row above. */
+  .shortlist-table [data-cell="style"] {
+    grid-column: 1 / -1;
+    margin-top: calc(-22px - var(--space-3));
+    padding-left: 34px;
+    line-height: 22px;
+  }
+
+  .shortlist-table [data-cell="style"]::before {
+    display: none;
+  }
+}
+
 /* =========================================================
    Feature pillars (Scene 6)
    ========================================================= */
