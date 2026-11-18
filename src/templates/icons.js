@@ -32,9 +32,10 @@ export const icon = {
 };
 
 /** Wordmark glyph: a memory bar with room to spare. */
-export const logoMark = `<svg class="logo-mark" viewBox="0 0 28 28" aria-hidden="true" focusable="false">
-  <rect x="1" y="1" width="26" height="26" rx="8" fill="var(--ink)"/>
-  <rect x="6" y="11.5" width="16" height="5" rx="2.5" fill="none" stroke="var(--bg)" stroke-opacity=".45" stroke-width="1.2"/>
-  <rect x="6" y="11.5" width="9" height="5" rx="2.5" fill="var(--bg)"/>
-  <circle cx="19.5" cy="14" r="1.4" fill="var(--accent)"/>
+// The Headroom mark: an H with a low crossbar and a dot in the space above it. Generated
+// from the app's Brand.swift (headroom-macOS: Branding/svg/headroom-mark.svg); ink and
+// accent follow the theme, so it's ink and deep teal on light, paper and bright teal on dark.
+export const logoMark = `<svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
+  <path fill="var(--ink)" d="M22 50L22 89C22 95.08 17.08 100 11 100L11 100C4.92 100 0 95.08 0 89L0 11C0 4.92 4.92 0 11 0L11 0C17.08 0 22 4.92 22 11ZM100 50L100 89C100 95.08 95.08 100 89 100L89 100C82.92 100 78 95.08 78 89L78 11C78 4.92 82.92 0 89 0L89 0C95.08 0 100 4.92 100 11ZM11 64L89 64L89 79L11 79Z"/>
+  <circle fill="var(--accent)" cx="50.00" cy="33.00" r="12.50"/>
 </svg>`;

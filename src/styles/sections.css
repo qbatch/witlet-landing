@@ -47,20 +47,23 @@
   height: 100%;
 }
 
+/* Brand lockup (see headroom-macOS Branding/README.md): the mark is as tall as the name's
+   capitals, 1/1.4 of the font size, with 42% of its width between them. SF Pro Semibold. */
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.3em;
   font-family: var(--font-sans);
-  font-size: 1.125rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.014em;
   text-decoration: none;
 }
 
 .logo-mark {
-  width: 28px;
-  height: 28px;
+  flex: none;
+  width: 0.714em;
+  height: 0.714em;
 }
 
 .nav {
