@@ -5,8 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "build": "vite build && node scripts/check-catalog.mjs dist/catalog/v1.json",
+    "preview": "vite preview",
+    "fixtures": "node scripts/export-shortlist-fixtures.mjs",
+    "check:catalog": "node scripts/check-catalog.mjs public/catalog/v1.json"
   },
   "dependencies": {
     "gsap": "^3.15.1"

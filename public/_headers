@@ -1,0 +1,7 @@
+# Cloudflare Pages response headers.
+# The Mac app checks the catalog at most once a day and sends If-None-Match, so a short
+# cache is plenty and a fix reaches everyone within minutes.
+/catalog/*
+  Content-Type: application/json; charset=utf-8
+  Cache-Control: public, max-age=300
+  X-Content-Type-Options: nosniff

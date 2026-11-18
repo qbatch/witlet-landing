@@ -111,6 +111,28 @@ mailing-list provider's JSON endpoint.
 
 Set environment variables in the host's dashboard (Vite inlines them at build time).
 
+### Cloudflare Pages (production)
+
+The site and the Mac app's model catalog are served from Cloudflare Pages at
+`https://headroom.qbatch.com`.
+
+1. In Cloudflare, go to *Workers & Pages ▸ Create ▸ Pages ▸ Connect to Git* and choose this repository.
+2. Use these build settings: framework preset **None** (or Vite), build command `npm run build`, output directory `dist`. Node comes from `.nvmrc`.
+3. In *Custom domains*, add `headroom.qbatch.com`. If `qbatch.com` uses Cloudflare DNS, the record is created for you. Otherwise, add a `CNAME` from `headroom` to `<project>.pages.dev` at your DNS provider.
+4. Every push to the production branch deploys. Pull requests get preview URLs.
+
+`public/_headers` sets the catalog's content type and a 5-minute cache. Cloudflare adds ETags, so the app's daily check is usually answered with `304 Not Modified`.
+
+### Model catalog (`public/catalog/v1.json`)
+
+The Headroom Mac app reads `https://headroom.qbatch.com/catalog/v1.json` at most once a day. It only uses the file if its signature matches a key built into the app. Otherwise it keeps its built-in catalog.
+
+- **Never edit `v1.json` by hand.** Any change breaks the signature. Make it in the Mac app repo with `node Scripts/publish-catalog.mjs --key-id 2026-11`, then commit and push this repo.
+- **Never move or rename it.** Every shipped copy of the app keeps reading that exact path. A future format would go next to it as `v2.json`.
+- `npm run build` runs `scripts/check-catalog.mjs`, which checks the signature against `catalog-keys.json` (public keys only). If the file is missing, edited or signed with an unknown key, the build fails and Cloudflare keeps serving the last good deploy. Run `npm run check:catalog` to check `public/` without building.
+
+### Other hosts
+
 - **Netlify**: build command `npm run build`, publish directory `dist`.
 - **Vercel**: framework preset "Vite" (build `npm run build`, output `dist`).
 - **GitHub Pages**: for a project site at `https://<user>.github.io/<repo>/`, build

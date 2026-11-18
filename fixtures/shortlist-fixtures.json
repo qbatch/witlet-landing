@@ -1,0 +1,1580 @@
+{
+  "source": "headroom-landing/src/data/demo.js",
+  "memorySizes": [
+    8,
+    16,
+    24,
+    32,
+    64
+  ],
+  "jobs": [
+    "write",
+    "summarise",
+    "study",
+    "translate",
+    "brainstorm",
+    "code"
+  ],
+  "cases": [
+    {
+      "memory": 8,
+      "job": "write",
+      "estimate": {
+        "total": 8,
+        "segments": {
+          "os": 3,
+          "apps": 2,
+          "model": 1.5,
+          "headroom": 1.5
+        },
+        "sentence": "A small writing assistant that starts answering in about 1–2 seconds and leaves room for your other apps."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 0.5,
+          "roomLeft": 2.5,
+          "cells": {
+            "download": "under 1 GB",
+            "roomLeft": "about 2.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 1,
+          "roomLeft": 2,
+          "cells": {
+            "download": "about 1 GB",
+            "roomLeft": "about 2 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 1.5,
+          "roomLeft": 1.5,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 1.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 8,
+      "job": "summarise",
+      "estimate": {
+        "total": 8,
+        "segments": {
+          "os": 3,
+          "apps": 2,
+          "model": 1.5,
+          "headroom": 1.5
+        },
+        "sentence": "A small document summariser that starts answering in about 1–2 seconds and leaves room for your other apps. Best with shorter documents; 16 GB or more handles long ones."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 0.5,
+          "roomLeft": 2.5,
+          "cells": {
+            "download": "under 1 GB",
+            "roomLeft": "about 2.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 1,
+          "roomLeft": 2,
+          "cells": {
+            "download": "about 1 GB",
+            "roomLeft": "about 2 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 1.5,
+          "roomLeft": 1.5,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 1.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 8,
+      "job": "study",
+      "estimate": {
+        "total": 8,
+        "segments": {
+          "os": 3,
+          "apps": 2,
+          "model": 1.5,
+          "headroom": 1.5
+        },
+        "sentence": "A small study helper that starts answering in about 1–2 seconds and leaves room for your other apps."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 0.5,
+          "roomLeft": 2.5,
+          "cells": {
+            "download": "under 1 GB",
+            "roomLeft": "about 2.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 1,
+          "roomLeft": 2,
+          "cells": {
+            "download": "about 1 GB",
+            "roomLeft": "about 2 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 1.5,
+          "roomLeft": 1.5,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 1.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 8,
+      "job": "translate",
+      "estimate": {
+        "total": 8,
+        "segments": {
+          "os": 3,
+          "apps": 2,
+          "model": 1.5,
+          "headroom": 1.5
+        },
+        "sentence": "A small translator that starts answering in about 1–2 seconds and leaves room for your other apps."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 0.5,
+          "roomLeft": 2.5,
+          "cells": {
+            "download": "under 1 GB",
+            "roomLeft": "about 2.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 1,
+          "roomLeft": 2,
+          "cells": {
+            "download": "about 1 GB",
+            "roomLeft": "about 2 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 1.5,
+          "roomLeft": 1.5,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 1.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 8,
+      "job": "brainstorm",
+      "estimate": {
+        "total": 8,
+        "segments": {
+          "os": 3,
+          "apps": 2,
+          "model": 1.5,
+          "headroom": 1.5
+        },
+        "sentence": "A small brainstorming partner that starts answering in about 1–2 seconds and leaves room for your other apps."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 0.5,
+          "roomLeft": 2.5,
+          "cells": {
+            "download": "under 1 GB",
+            "roomLeft": "about 2.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 1,
+          "roomLeft": 2,
+          "cells": {
+            "download": "about 1 GB",
+            "roomLeft": "about 2 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 1.5,
+          "roomLeft": 1.5,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 1.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 8,
+      "job": "code",
+      "estimate": {
+        "total": 8,
+        "segments": {
+          "os": 3,
+          "apps": 2,
+          "model": 1.5,
+          "headroom": 1.5
+        },
+        "sentence": "A small coding helper that starts answering in about 1–2 seconds and leaves room for your other apps. Fine for short snippets; 16 GB or more is better for bigger projects."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 0.5,
+          "roomLeft": 2.5,
+          "cells": {
+            "download": "under 1 GB",
+            "roomLeft": "about 2.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 1,
+          "roomLeft": 2,
+          "cells": {
+            "download": "about 1 GB",
+            "roomLeft": "about 2 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 1.5,
+          "roomLeft": 1.5,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 1.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 16,
+      "job": "write",
+      "estimate": {
+        "total": 16,
+        "segments": {
+          "os": 3.5,
+          "apps": 3.5,
+          "model": 4.5,
+          "headroom": 4.5
+        },
+        "sentence": "A medium-sized writing assistant that writes noticeably better, starts answering in about 2 seconds and keeps up with your reading."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 1.5,
+          "roomLeft": 7,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 7 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 3,
+          "roomLeft": 5.5,
+          "cells": {
+            "download": "about 3 GB",
+            "roomLeft": "about 5.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 4,
+          "roomLeft": 4.5,
+          "cells": {
+            "download": "about 4 GB",
+            "roomLeft": "about 4.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 16,
+      "job": "summarise",
+      "estimate": {
+        "total": 16,
+        "segments": {
+          "os": 3.5,
+          "apps": 3.5,
+          "model": 5,
+          "headroom": 4
+        },
+        "sentence": "A medium-sized document summariser that writes noticeably better, starts answering in about 2 seconds and keeps up with your reading."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 2,
+          "roomLeft": 6.5,
+          "cells": {
+            "download": "about 2 GB",
+            "roomLeft": "about 6.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 3.5,
+          "roomLeft": 5,
+          "cells": {
+            "download": "about 3.5 GB",
+            "roomLeft": "about 5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 4.5,
+          "roomLeft": 4,
+          "cells": {
+            "download": "about 4.5 GB",
+            "roomLeft": "about 4 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 16,
+      "job": "study",
+      "estimate": {
+        "total": 16,
+        "segments": {
+          "os": 3.5,
+          "apps": 3.5,
+          "model": 4.5,
+          "headroom": 4.5
+        },
+        "sentence": "A medium-sized study helper that writes noticeably better, starts answering in about 2 seconds and keeps up with your reading."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 1.5,
+          "roomLeft": 7,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 7 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 3,
+          "roomLeft": 5.5,
+          "cells": {
+            "download": "about 3 GB",
+            "roomLeft": "about 5.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 4,
+          "roomLeft": 4.5,
+          "cells": {
+            "download": "about 4 GB",
+            "roomLeft": "about 4.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 16,
+      "job": "translate",
+      "estimate": {
+        "total": 16,
+        "segments": {
+          "os": 3.5,
+          "apps": 3.5,
+          "model": 4,
+          "headroom": 5
+        },
+        "sentence": "A medium-sized translator that writes noticeably better, starts answering in about 2 seconds and keeps up with your reading."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 1.5,
+          "roomLeft": 7,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 7 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 2.5,
+          "roomLeft": 6,
+          "cells": {
+            "download": "about 2.5 GB",
+            "roomLeft": "about 6 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 3.5,
+          "roomLeft": 5,
+          "cells": {
+            "download": "about 3.5 GB",
+            "roomLeft": "about 5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 16,
+      "job": "brainstorm",
+      "estimate": {
+        "total": 16,
+        "segments": {
+          "os": 3.5,
+          "apps": 3.5,
+          "model": 4.5,
+          "headroom": 4.5
+        },
+        "sentence": "A medium-sized brainstorming partner that writes noticeably better, starts answering in about 2 seconds and keeps up with your reading."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 1.5,
+          "roomLeft": 7,
+          "cells": {
+            "download": "about 1.5 GB",
+            "roomLeft": "about 7 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 3,
+          "roomLeft": 5.5,
+          "cells": {
+            "download": "about 3 GB",
+            "roomLeft": "about 5.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 4,
+          "roomLeft": 4.5,
+          "cells": {
+            "download": "about 4 GB",
+            "roomLeft": "about 4.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 16,
+      "job": "code",
+      "estimate": {
+        "total": 16,
+        "segments": {
+          "os": 3.5,
+          "apps": 3.5,
+          "model": 5,
+          "headroom": 4
+        },
+        "sentence": "A medium-sized coding helper that writes noticeably better, starts answering in about 2 seconds and keeps up with your reading."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 2,
+          "roomLeft": 6.5,
+          "cells": {
+            "download": "about 2 GB",
+            "roomLeft": "about 6.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 3.5,
+          "roomLeft": 5,
+          "cells": {
+            "download": "about 3.5 GB",
+            "roomLeft": "about 5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 4.5,
+          "roomLeft": 4,
+          "cells": {
+            "download": "about 4.5 GB",
+            "roomLeft": "about 4 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 24,
+      "job": "write",
+      "estimate": {
+        "total": 24,
+        "segments": {
+          "os": 4,
+          "apps": 4,
+          "model": 8,
+          "headroom": 8
+        },
+        "sentence": "A capable writing assistant for longer, trickier requests that keeps up with your reading, with comfortable room to spare."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 3,
+          "roomLeft": 12.5,
+          "cells": {
+            "download": "about 3 GB",
+            "roomLeft": "about 12.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 5,
+          "roomLeft": 10,
+          "cells": {
+            "download": "about 5 GB",
+            "roomLeft": "about 10 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 7,
+          "roomLeft": 8,
+          "cells": {
+            "download": "about 7 GB",
+            "roomLeft": "about 8 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 24,
+      "job": "summarise",
+      "estimate": {
+        "total": 24,
+        "segments": {
+          "os": 4,
+          "apps": 4,
+          "model": 9,
+          "headroom": 7
+        },
+        "sentence": "A capable document summariser for longer, trickier requests that keeps up with your reading, with comfortable room to spare."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 3.5,
+          "roomLeft": 12,
+          "cells": {
+            "download": "about 3.5 GB",
+            "roomLeft": "about 12 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 6,
+          "roomLeft": 9,
+          "cells": {
+            "download": "about 6 GB",
+            "roomLeft": "about 9 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 7.5,
+          "roomLeft": 7,
+          "cells": {
+            "download": "about 7.5 GB",
+            "roomLeft": "about 7 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 24,
+      "job": "study",
+      "estimate": {
+        "total": 24,
+        "segments": {
+          "os": 4,
+          "apps": 4,
+          "model": 8,
+          "headroom": 8
+        },
+        "sentence": "A capable study helper for longer, trickier requests that keeps up with your reading, with comfortable room to spare."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 3,
+          "roomLeft": 12.5,
+          "cells": {
+            "download": "about 3 GB",
+            "roomLeft": "about 12.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 5,
+          "roomLeft": 10,
+          "cells": {
+            "download": "about 5 GB",
+            "roomLeft": "about 10 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 7,
+          "roomLeft": 8,
+          "cells": {
+            "download": "about 7 GB",
+            "roomLeft": "about 8 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 24,
+      "job": "translate",
+      "estimate": {
+        "total": 24,
+        "segments": {
+          "os": 4,
+          "apps": 4,
+          "model": 7,
+          "headroom": 9
+        },
+        "sentence": "A capable translator for longer, trickier requests that keeps up with your reading, with comfortable room to spare."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 2.5,
+          "roomLeft": 13,
+          "cells": {
+            "download": "about 2.5 GB",
+            "roomLeft": "about 13 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 4.5,
+          "roomLeft": 10.5,
+          "cells": {
+            "download": "about 4.5 GB",
+            "roomLeft": "about 10.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 6,
+          "roomLeft": 9,
+          "cells": {
+            "download": "about 6 GB",
+            "roomLeft": "about 9 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 24,
+      "job": "brainstorm",
+      "estimate": {
+        "total": 24,
+        "segments": {
+          "os": 4,
+          "apps": 4,
+          "model": 8,
+          "headroom": 8
+        },
+        "sentence": "A capable brainstorming partner for longer, trickier requests that keeps up with your reading, with comfortable room to spare."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 3,
+          "roomLeft": 12.5,
+          "cells": {
+            "download": "about 3 GB",
+            "roomLeft": "about 12.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 5,
+          "roomLeft": 10,
+          "cells": {
+            "download": "about 5 GB",
+            "roomLeft": "about 10 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 7,
+          "roomLeft": 8,
+          "cells": {
+            "download": "about 7 GB",
+            "roomLeft": "about 8 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 24,
+      "job": "code",
+      "estimate": {
+        "total": 24,
+        "segments": {
+          "os": 4,
+          "apps": 4,
+          "model": 9,
+          "headroom": 7
+        },
+        "sentence": "A capable coding helper for longer, trickier requests that keeps up with your reading, with comfortable room to spare."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 3.5,
+          "roomLeft": 12,
+          "cells": {
+            "download": "about 3.5 GB",
+            "roomLeft": "about 12 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 6,
+          "roomLeft": 9,
+          "cells": {
+            "download": "about 6 GB",
+            "roomLeft": "about 9 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 7.5,
+          "roomLeft": 7,
+          "cells": {
+            "download": "about 7.5 GB",
+            "roomLeft": "about 7 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 32,
+      "job": "write",
+      "estimate": {
+        "total": 32,
+        "segments": {
+          "os": 4,
+          "apps": 5,
+          "model": 11,
+          "headroom": 12
+        },
+        "sentence": "A large writing assistant for demanding work, with plenty of room left for everything else you have open."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 4.5,
+          "roomLeft": 18,
+          "cells": {
+            "download": "about 4.5 GB",
+            "roomLeft": "about 18 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 7,
+          "roomLeft": 14.5,
+          "cells": {
+            "download": "about 7 GB",
+            "roomLeft": "about 14.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 9.5,
+          "roomLeft": 12,
+          "cells": {
+            "download": "about 9.5 GB",
+            "roomLeft": "about 12 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 32,
+      "job": "summarise",
+      "estimate": {
+        "total": 32,
+        "segments": {
+          "os": 4,
+          "apps": 5,
+          "model": 12.5,
+          "headroom": 10.5
+        },
+        "sentence": "A large document summariser for demanding work, with plenty of room left for everything else you have open."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 4.5,
+          "roomLeft": 17.5,
+          "cells": {
+            "download": "about 4.5 GB",
+            "roomLeft": "about 17.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 8,
+          "roomLeft": 13.5,
+          "cells": {
+            "download": "about 8 GB",
+            "roomLeft": "about 13.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 10.5,
+          "roomLeft": 10.5,
+          "cells": {
+            "download": "about 10.5 GB",
+            "roomLeft": "about 10.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 32,
+      "job": "study",
+      "estimate": {
+        "total": 32,
+        "segments": {
+          "os": 4,
+          "apps": 5,
+          "model": 11,
+          "headroom": 12
+        },
+        "sentence": "A large study helper for demanding work, with plenty of room left for everything else you have open."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 4.5,
+          "roomLeft": 18,
+          "cells": {
+            "download": "about 4.5 GB",
+            "roomLeft": "about 18 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 7,
+          "roomLeft": 14.5,
+          "cells": {
+            "download": "about 7 GB",
+            "roomLeft": "about 14.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 9.5,
+          "roomLeft": 12,
+          "cells": {
+            "download": "about 9.5 GB",
+            "roomLeft": "about 12 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 32,
+      "job": "translate",
+      "estimate": {
+        "total": 32,
+        "segments": {
+          "os": 4,
+          "apps": 5,
+          "model": 10,
+          "headroom": 13
+        },
+        "sentence": "A large translator for demanding work, with plenty of room left for everything else you have open."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 4,
+          "roomLeft": 18.5,
+          "cells": {
+            "download": "about 4 GB",
+            "roomLeft": "about 18.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 6.5,
+          "roomLeft": 15.5,
+          "cells": {
+            "download": "about 6.5 GB",
+            "roomLeft": "about 15.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 8.5,
+          "roomLeft": 13,
+          "cells": {
+            "download": "about 8.5 GB",
+            "roomLeft": "about 13 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 32,
+      "job": "brainstorm",
+      "estimate": {
+        "total": 32,
+        "segments": {
+          "os": 4,
+          "apps": 5,
+          "model": 11,
+          "headroom": 12
+        },
+        "sentence": "A large brainstorming partner for demanding work, with plenty of room left for everything else you have open."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 4.5,
+          "roomLeft": 18,
+          "cells": {
+            "download": "about 4.5 GB",
+            "roomLeft": "about 18 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 7,
+          "roomLeft": 14.5,
+          "cells": {
+            "download": "about 7 GB",
+            "roomLeft": "about 14.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 9.5,
+          "roomLeft": 12,
+          "cells": {
+            "download": "about 9.5 GB",
+            "roomLeft": "about 12 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 32,
+      "job": "code",
+      "estimate": {
+        "total": 32,
+        "segments": {
+          "os": 4,
+          "apps": 5,
+          "model": 12.5,
+          "headroom": 10.5
+        },
+        "sentence": "A large coding helper for demanding work, with plenty of room left for everything else you have open."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 4.5,
+          "roomLeft": 17.5,
+          "cells": {
+            "download": "about 4.5 GB",
+            "roomLeft": "about 17.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 8,
+          "roomLeft": 13.5,
+          "cells": {
+            "download": "about 8 GB",
+            "roomLeft": "about 13.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 10.5,
+          "roomLeft": 10.5,
+          "cells": {
+            "download": "about 10.5 GB",
+            "roomLeft": "about 10.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 64,
+      "job": "write",
+      "estimate": {
+        "total": 64,
+        "segments": {
+          "os": 4.5,
+          "apps": 6,
+          "model": 22,
+          "headroom": 31.5
+        },
+        "sentence": "A very capable writing assistant, with lots of room to spare. You could keep a second assistant ready too."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 8.5,
+          "roomLeft": 43.5,
+          "cells": {
+            "download": "about 8.5 GB",
+            "roomLeft": "about 43.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 14,
+          "roomLeft": 37,
+          "cells": {
+            "download": "about 14 GB",
+            "roomLeft": "about 37 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 18.5,
+          "roomLeft": 31.5,
+          "cells": {
+            "download": "about 18.5 GB",
+            "roomLeft": "about 31.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 64,
+      "job": "summarise",
+      "estimate": {
+        "total": 64,
+        "segments": {
+          "os": 4.5,
+          "apps": 6,
+          "model": 25.5,
+          "headroom": 28
+        },
+        "sentence": "A very capable document summariser, with lots of room to spare. You could keep a second assistant ready too."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 10,
+          "roomLeft": 42,
+          "cells": {
+            "download": "about 10 GB",
+            "roomLeft": "about 42 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 16,
+          "roomLeft": 34.5,
+          "cells": {
+            "download": "about 16 GB",
+            "roomLeft": "about 34.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 21.5,
+          "roomLeft": 28,
+          "cells": {
+            "download": "about 21.5 GB",
+            "roomLeft": "about 28 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 64,
+      "job": "study",
+      "estimate": {
+        "total": 64,
+        "segments": {
+          "os": 4.5,
+          "apps": 6,
+          "model": 22,
+          "headroom": 31.5
+        },
+        "sentence": "A very capable study helper, with lots of room to spare. You could keep a second assistant ready too."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 8.5,
+          "roomLeft": 43.5,
+          "cells": {
+            "download": "about 8.5 GB",
+            "roomLeft": "about 43.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 14,
+          "roomLeft": 37,
+          "cells": {
+            "download": "about 14 GB",
+            "roomLeft": "about 37 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 18.5,
+          "roomLeft": 31.5,
+          "cells": {
+            "download": "about 18.5 GB",
+            "roomLeft": "about 31.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 64,
+      "job": "translate",
+      "estimate": {
+        "total": 64,
+        "segments": {
+          "os": 4.5,
+          "apps": 6,
+          "model": 20,
+          "headroom": 33.5
+        },
+        "sentence": "A very capable translator, with lots of room to spare. You could keep a second assistant ready too."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 7.5,
+          "roomLeft": 44.5,
+          "cells": {
+            "download": "about 7.5 GB",
+            "roomLeft": "about 44.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 13,
+          "roomLeft": 38.5,
+          "cells": {
+            "download": "about 13 GB",
+            "roomLeft": "about 38.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 17,
+          "roomLeft": 33.5,
+          "cells": {
+            "download": "about 17 GB",
+            "roomLeft": "about 33.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 64,
+      "job": "brainstorm",
+      "estimate": {
+        "total": 64,
+        "segments": {
+          "os": 4.5,
+          "apps": 6,
+          "model": 22,
+          "headroom": 31.5
+        },
+        "sentence": "A very capable brainstorming partner, with lots of room to spare. You could keep a second assistant ready too."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 8.5,
+          "roomLeft": 43.5,
+          "cells": {
+            "download": "about 8.5 GB",
+            "roomLeft": "about 43.5 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 14,
+          "roomLeft": 37,
+          "cells": {
+            "download": "about 14 GB",
+            "roomLeft": "about 37 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 18.5,
+          "roomLeft": 31.5,
+          "cells": {
+            "download": "about 18.5 GB",
+            "roomLeft": "about 31.5 GB"
+          }
+        }
+      ]
+    },
+    {
+      "memory": 64,
+      "job": "code",
+      "estimate": {
+        "total": 64,
+        "segments": {
+          "os": 4.5,
+          "apps": 6,
+          "model": 25.5,
+          "headroom": 28
+        },
+        "sentence": "A very capable coding helper, with lots of room to spare. You could keep a second assistant ready too."
+      },
+      "shortlist": [
+        {
+          "id": "A",
+          "style": "Quick and light",
+          "starts": "about 1 second",
+          "pace": "faster than you read",
+          "download": 10,
+          "roomLeft": 42,
+          "cells": {
+            "download": "about 10 GB",
+            "roomLeft": "about 42 GB"
+          }
+        },
+        {
+          "id": "B",
+          "style": "Balanced",
+          "starts": "about 1–2 seconds",
+          "pace": "keeps up with your reading",
+          "download": 16,
+          "roomLeft": 34.5,
+          "cells": {
+            "download": "about 16 GB",
+            "roomLeft": "about 34.5 GB"
+          }
+        },
+        {
+          "id": "C",
+          "style": "Most thorough",
+          "starts": "about 2–3 seconds",
+          "pace": "about your reading speed",
+          "download": 21.5,
+          "roomLeft": 28,
+          "cells": {
+            "download": "about 21.5 GB",
+            "roomLeft": "about 28 GB"
+          }
+        }
+      ]
+    }
+  ]
+}

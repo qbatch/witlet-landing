@@ -1,0 +1,6 @@
+{
+  "note": "Public keys allowed to sign public/catalog/v1.json. Must match CatalogTrust.publicKeys in the Headroom Mac app. Public keys only; the private key never goes in a repo.",
+  "keys": {
+    "2026-11": "luj0MK7NwXpse4rJ0Eihg0dMhRkaSj/LsLInT+EF7xQ="
+  }
+}
