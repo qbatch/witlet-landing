@@ -137,7 +137,7 @@ The Headroom Mac app reads `https://headroom.qbatch.com/catalog/v1.json` at most
 ### Other hosts
 
 - **Netlify**: build command `npm run build`, publish directory `dist`.
-- **Vercel**: framework preset "Vite" (build `npm run build`, output `dist`).
+- **Vercel**: `vercel.json` builds `dist/` and turns on clean URLs, so `/privacy`, `/terms` and `/support` serve the matching pages. Node 22 is required (Vite 8). Redeploy after this file is on the branch Vercel builds.
 - **GitHub Pages**: for a project site at `https://<user>.github.io/<repo>/`, build
   with `VITE_BASE_PATH=/<repo>/ npm run build` and publish `dist/` (for example with
   the `actions/upload-pages-artifact` + `actions/deploy-pages` workflow). A custom
