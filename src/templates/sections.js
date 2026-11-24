@@ -1,10 +1,12 @@
 /** Section markup. Every word comes from content.js. */
+import { config } from '../config.js';
 import { content, jobs } from '../content.js';
 import { accordionMarkup } from '../components/accordion.js';
 import { segmentedMarkup } from '../components/segmented.js';
 import { defaultJob, defaultMemory, formatGb, getEstimate, getShortlist, memorySizes, shortlistCell } from '../data/demo.js';
 import { esc } from '../lib/dom.js';
 import { icon } from './icons.js';
+import { pageHref } from './site.js';
 import { heroVisual, jargonVisual, journeyWindow, privacyWindow } from './visuals.js';
 
 const sectionHead = ({ eyebrow, title }, id, { lead = '', center = false, extra = '' } = {}) => `
@@ -25,7 +27,7 @@ export function hero() {
         <h1 id="hero-title" class="hero-title hero-rise" style="--i:1">${esc(h.title)}</h1>
         <p class="lead hero-sub hero-rise" style="--i:2">${esc(h.subtitle)}</p>
         <div class="hero-ctas hero-rise" style="--i:3">
-          <a class="btn btn-primary btn-lg" href="#waitlist">${esc(h.primaryCta)}</a>
+          <a class="btn btn-primary btn-lg" href="${esc(pageHref(content.nav.ctaHref))}">${esc(h.primaryCta)}</a>
           <a class="btn btn-ghost btn-lg" href="#how">${esc(h.secondaryCta)}${icon.arrowRight()}</a>
         </div>
         <p class="hero-note muted hero-rise" style="--i:4">${esc(h.note)}</p>
@@ -227,6 +229,7 @@ export function privacy() {
         <ul class="privacy-points" role="list" data-reveal style="--i:3">
           ${p.points.map((pt) => `<li>${icon.check('icon')}${esc(pt)}</li>`).join('')}
         </ul>
+        <p class="privacy-more" data-reveal style="--i:5"><a href="${esc(pageHref(config.links.privacy))}">${esc(p.policyLabel)}</a></p>
         <div class="switch-row" data-reveal style="--i:4">
           <button class="switch" type="button" role="switch" aria-checked="false" aria-describedby="airplane-status">
             <span class="switch-track" aria-hidden="true"><span class="switch-thumb"></span></span>
@@ -264,28 +267,25 @@ export function personas() {
     </div>`;
 }
 
-export function pricing() {
-  const p = content.pricing;
-  const badge = `<p class="planned-badge" data-reveal style="--i:2">${esc(p.badge)}</p>`;
+export function included() {
+  const p = content.included;
   return `
     <div class="container">
-      ${sectionHead(p, 'pricing-title', { center: true, extra: badge })}
-      <div class="pricing-grid">
-        ${p.plans
+      ${sectionHead(p, 'included-title', { lead: p.intro })}
+      <ul class="feature-grid" role="list">
+        ${p.items
           .map(
-            (plan, i) => `
-          <article class="plan card${plan.id === 'pro' ? ' plan--pro' : ''}" data-reveal style="--i:${i}" aria-labelledby="plan-${plan.id}">
-            <h3 id="plan-${plan.id}" class="plan-name">${esc(plan.name)}</h3>
-            <p class="plan-price"><span class="plan-amount">${esc(plan.price)}</span><span class="plan-terms">${esc(plan.priceNote)}</span></p>
-            <ul class="plan-features" role="list">
-              ${plan.features.map((f) => `<li>${icon.check('icon')}${esc(f)}</li>`).join('')}
-            </ul>
-            <a class="btn ${plan.id === 'pro' ? 'btn-primary' : 'btn-secondary'}" href="#waitlist">${esc(p.cta)}</a>
-          </article>`,
+            (item, i) => `
+          <li data-reveal style="--i:${i}">
+            <div class="pillar card">
+              <span class="pillar-icon">${icon.pillar(item.icon)}</span>
+              <h3>${esc(item.title)}</h3>
+              <p>${esc(item.text)}</p>
+            </div>
+          </li>`,
           )
           .join('')}
-      </div>
-      <p class="pricing-note muted" data-reveal>${esc(p.note)} ${esc(p.requirements)}</p>
+      </ul>
     </div>`;
 }
 
@@ -295,44 +295,25 @@ export function faq() {
     <div class="container faq-grid">
       ${sectionHead(f, 'faq-title')}
       ${accordionMarkup(f.items, 'faq')}
+      <p class="faq-more" data-reveal><a href="${esc(pageHref(config.links.support))}">${esc(f.more)}</a></p>
     </div>`;
 }
 
-export function waitlist() {
-  const w = content.waitlist;
+export function download() {
+  const d = content.download;
+  const store = config.appStore
+    ? `<a class="btn btn-primary btn-lg" href="${esc(config.appStore)}">${esc(d.storeCta)}</a>`
+    : `<p class="download-fallback">${esc(d.storeFallback)}</p>`;
   return `
     <div class="aurora" aria-hidden="true"><span></span><span></span><span></span></div>
     <div class="container cta-inner">
-      ${sectionHead(w, 'waitlist-title', { lead: w.text, center: true })}
-      <form class="waitlist-form card" method="post" novalidate data-reveal style="--i:3"
-            data-msg-empty="${esc(w.errors.empty)}" data-msg-invalid="${esc(w.errors.invalid)}"
-            data-msg-network="${esc(w.errors.network)}" data-msg-success="${esc(w.success)}"
-            data-label-submit="${esc(w.submit)}" data-label-submitting="${esc(w.submitting)}">
-        <div class="field">
-          <label for="wl-email">${esc(w.emailLabel)}</label>
-          <input id="wl-email" name="email" type="email" inputmode="email" autocomplete="email" required
-                 placeholder="${esc(w.emailPlaceholder)}" aria-describedby="wl-email-error wl-note" />
-          <p class="field-error" id="wl-email-error" aria-live="assertive"></p>
-        </div>
-        <div class="field">
-          <label for="wl-job">${esc(w.jobLabel)} <span class="muted">${esc(w.jobOptional)}</span></label>
-          <div class="select-wrap">
-            <select id="wl-job" name="job">
-              <option value="">${esc(w.jobPlaceholder)}</option>
-              ${jobs.map((j) => `<option value="${j.id}">${esc(j.label)}</option>`).join('')}
-            </select>
-          </div>
-        </div>
-        <div class="hp" aria-hidden="true">
-          <label for="wl-website">${esc(w.honeypotLabel)}</label>
-          <input id="wl-website" name="website" type="text" tabindex="-1" autocomplete="off" />
-        </div>
-        <button class="btn btn-primary btn-lg submit" type="submit">
-          <span class="submit-label">${esc(w.submit)}</span>
-          <span class="submit-done" aria-hidden="true">${icon.check('icon submit-check')}</span>
-        </button>
-        <p class="form-status" role="status" aria-live="polite"></p>
-        <p class="form-note muted" id="wl-note">${esc(w.privacyNote)}</p>
-      </form>
+      ${sectionHead(d, 'download-title', { lead: d.text, center: true })}
+      <div class="download-card card" data-reveal style="--i:3">
+        <ul class="download-points" role="list">
+          ${d.points.map((point) => `<li>${icon.check('icon')}${esc(point)}</li>`).join('')}
+        </ul>
+        ${store}
+        <p class="form-note"><a href="${esc(pageHref(config.links.support))}">${esc(d.support)}</a></p>
+      </div>
     </div>`;
 }

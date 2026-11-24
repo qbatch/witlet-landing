@@ -1,22 +1,19 @@
 /**
- * Scene 1 — Hero: "Mac check to test drive". Plays once on load, then
- * settles on the final frame (which is also the static, reduced-motion
- * version rendered in the HTML). A Replay button appears afterwards.
+ * Scene 1 — Hero: Mac check, then the models it would recommend.
+ * Plays once on load, then settles on the final frame (which is also the
+ * static, reduced-motion version rendered in the HTML). A Replay button
+ * appears afterwards.
  *
  * Choreography (seconds):
  *   0.0  window rises in                       0.35–1.75 scan line sweeps
  *   0.5  gauges stagger in, rings fill, numbers count up (1.3 s)
  *   2.0  verdict slides in, its check draws
- *   3.0  gauges fade out → test drive fades in, cards stagger in
- *   3.9  each card "thinks" (live timer), then types at its own speed
- *   ~10  card B lifts, "Your pick" badge pops, check mark draws
+ *   3.0  gauges fade out → model cards fade in
+ *   4.2  the recommended card lifts and its badge pops
  */
-import { content } from '../content.js';
-import { createTypewriter, qs, qsa } from '../lib/dom.js';
+import { qs, qsa } from '../lib/dom.js';
 import { DUR, GSAP_EASE, STAGGER, pauseWhenHidden, prefersReducedMotion } from '../lib/motion.js';
-import { DRAW, gsap, typeIn } from '../lib/tween.js';
-
-const TYPE_START = 3.9;
+import { DRAW, gsap } from '../lib/tween.js';
 
 export function init(root) {
   if (prefersReducedMotion()) {
@@ -24,7 +21,6 @@ export function init(root) {
     return () => {};
   }
 
-  const v = content.hero.visual;
   const el = {
     win: qs('.hero-window', root),
     scan: qs('.hv-scan', root),
@@ -36,19 +32,13 @@ export function init(root) {
     rings: qsa('.gauge-fill', root),
     cardsWrap: qs('.hv-cards', root),
     cards: qsa('.hv-card', root),
-    picked: qs('[data-card="B"]', root),
+    picked: qs('.hv-badge', root).closest('.hv-card'),
     badge: qs('.hv-badge', root),
     badgeCheck: qs('.hv-badge-check path', root),
     replay: qs('.replay', root),
   };
   const counters = qsa('[data-count]', root);
   const textValues = qsa('.gauge-value:not([data-count])', root);
-  const cards = el.cards.map((card) => ({
-    wait: Number(card.dataset.wait),
-    typing: Number(card.dataset.typing),
-    timer: qs('.hv-timer', card),
-    typer: createTypewriter(qs('.type', card)),
-  }));
 
   let timeline;
   let stopPausing = () => {};
@@ -68,22 +58,16 @@ export function init(root) {
     counters.forEach((c) => (c.textContent = `0${c.dataset.suffix}`));
     el.cardsWrap.classList.remove('has-pick');
     el.picked.classList.remove('is-picked');
-    cards.forEach((c) => {
-      c.typer.set(0);
-      c.timer.textContent = v.waiting;
-    });
   }
 
   function build() {
     const tl = gsap.timeline({ defaults: { ease: GSAP_EASE, duration: DUR.slow } });
 
-    // a. Window appears; a soft scan line sweeps across it.
     tl.to(el.win, { autoAlpha: 1, y: 0, scale: 1, duration: 0.9 }, 0)
       .to(el.scan, { autoAlpha: 1, duration: DUR.fast }, 0.35)
       .to(el.scan, { xPercent: 240, duration: 1.4, ease: 'power1.inOut' }, 0.35)
       .to(el.scan, { autoAlpha: 0, duration: 0.3 }, 1.45);
 
-    // b. Gauges count up, then resolve into one plain sentence.
     tl.to(el.gauges, { autoAlpha: 1, y: 0, stagger: STAGGER }, 0.5).to(
       el.rings,
       {
@@ -112,33 +96,12 @@ export function init(root) {
       .to(el.verdict, { autoAlpha: 1, y: 0 }, 2.0)
       .to(el.verdictCheck, { strokeDashoffset: 0, duration: 0.6, ...DRAW }, 2.15);
 
-    // c. The check view gives way to the test drive.
+    // The check gives way to the models this Mac would be offered.
     tl.to(el.check, { autoAlpha: 0, scale: 0.96, duration: DUR.med, ease: 'power2.in' }, 3.0)
       .fromTo(el.drive, { autoAlpha: 0, y: 14 }, { autoAlpha: 1, y: 0 }, 3.3)
-      // clearProps hands opacity/transform back to CSS for the pick state.
       .to(el.cards, { autoAlpha: 1, y: 0, stagger: STAGGER, clearProps: 'opacity,visibility,transform' }, 3.4);
 
-    // Each card waits (live timer), then types at its own pace.
-    let lastDone = 0;
-    cards.forEach((c) => {
-      const clock = { t: 0 };
-      tl.to(
-        clock,
-        {
-          t: c.wait,
-          duration: c.wait,
-          ease: 'none',
-          onUpdate: () => (c.timer.textContent = `${v.waiting} ${clock.t.toFixed(1)} s`),
-          onComplete: () => (c.timer.textContent = v.timer.replace('{s}', c.wait.toFixed(1))),
-        },
-        TYPE_START,
-      );
-      tl.add(typeIn(c.typer, c.typing), TYPE_START + c.wait);
-      lastDone = Math.max(lastDone, TYPE_START + c.wait + c.typing);
-    });
-
-    // d. Card B is the pick: it lifts, the badge pops and its check draws.
-    const pickAt = lastDone + 0.4;
+    const pickAt = 4.3;
     tl.call(() => {
       el.cardsWrap.classList.add('has-pick');
       el.picked.classList.add('is-picked');

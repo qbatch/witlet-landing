@@ -88,7 +88,8 @@
   transition: color var(--dur-fast) var(--ease-out), background-color var(--dur-fast) var(--ease-out);
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link[aria-current="page"] {
   color: var(--ink);
   background: var(--bg-sunken);
 }
@@ -575,20 +576,29 @@
   font-size: 12px;
 }
 
-.hv-timer {
+.hv-timer,
+.hv-size {
   font-size: 11px;
   color: var(--ink-3);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
+.hv-fit {
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.hv-speed,
 .hv-reply {
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.45;
+  color: var(--ink-2);
 }
 
 .hv-badge {
   position: absolute;
+  z-index: 1;
   top: -11px;
   right: 12px;
   display: inline-flex;
@@ -917,11 +927,11 @@
   }
 }
 
-/* The pinned story: a 250vh track with a sticky viewport inside it.
-   ScrollTrigger maps the track's scroll progress to the active step. */
+/* The pinned story: a 200vh track with a sticky viewport inside it.
+   ScrollTrigger maps the track's scroll progress to the five steps. */
 @media (min-width: 900px) and (prefers-reduced-motion: no-preference) {
   .js .journey-track {
-    height: 250vh;
+    height: 200vh;
   }
 
   .js .journey-sticky {
@@ -1031,7 +1041,7 @@
 
 .meter-row {
   display: grid;
-  grid-template-columns: 84px 1fr 60px;
+  grid-template-columns: 72px 1fr auto;
   align-items: center;
   gap: 12px;
   font-size: 13px;
@@ -1103,6 +1113,12 @@
   background: var(--accent-soft);
   color: var(--accent);
   box-shadow: 0 0 0 1.5px var(--accent);
+}
+
+.pane-caption {
+  color: var(--ink-2);
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .mock-field {
@@ -1204,6 +1220,59 @@
   height: 16px;
   color: var(--accent);
   stroke-width: 2.2;
+}
+
+.model-list {
+  display: grid;
+  gap: 10px;
+}
+
+.model-row {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--bg-elev);
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.model-copy {
+  display: grid;
+  gap: 2px;
+}
+
+.model-fit {
+  font-size: 12px;
+  color: var(--ink-3);
+}
+
+.model-row.is-recommended {
+  box-shadow: 0 0 0 1.5px var(--accent), var(--shadow-sm);
+}
+
+.model-badge {
+  position: absolute;
+  z-index: 1;
+  top: -8px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px 2px 5px;
+  border-radius: var(--radius-pill);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.model-badge .icon {
+  width: 12px;
+  height: 12px;
+  stroke-width: 2.6;
 }
 
 .pane-prompt {
@@ -1644,13 +1713,15 @@
    ========================================================= */
 
 .pillars-grid,
-.personas-grid {
+.personas-grid,
+.feature-grid {
   display: grid;
   gap: var(--space-4);
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
 }
 
-.pillars-grid > li {
+.pillars-grid > li,
+.feature-grid > li {
   display: flex;
 }
 
@@ -2024,6 +2095,30 @@
   margin-bottom: 0;
 }
 
+.faq-more,
+.privacy-more {
+  margin-top: var(--space-6);
+  font-weight: 600;
+}
+
+.faq-more a,
+.privacy-more a,
+.page-related a,
+.prose a,
+.download-card a {
+  color: var(--accent);
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.faq-more a:hover,
+.privacy-more a:hover,
+.page-related a:hover,
+.prose a:hover,
+.download-card a:hover {
+  text-decoration: underline;
+}
+
 @media (min-width: 960px) {
   .faq-grid {
     grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
@@ -2034,6 +2129,11 @@
   .faq .section-head {
     position: sticky;
     top: calc(var(--header-h) + var(--space-6));
+  }
+
+  .faq-more {
+    grid-column: 2;
+    margin-top: 0;
   }
 }
 
@@ -2239,6 +2339,134 @@
 .footer-links a:hover {
   color: var(--ink);
   text-decoration: underline;
+}
+
+.footer-links a[aria-current="page"] {
+  color: var(--ink);
+  font-weight: 650;
+}
+
+/* =========================================================
+   Get the app
+   ========================================================= */
+
+.download-card {
+  display: grid;
+  gap: var(--space-5);
+  max-width: 36rem;
+  margin-inline: auto;
+  padding: clamp(20px, 4vw, 40px);
+  background: color-mix(in srgb, var(--bg-elev) 82%, transparent);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+.download-points {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.download-points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.download-points .icon {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  flex: none;
+  color: var(--accent);
+  stroke-width: 2.2;
+}
+
+.download-fallback {
+  font-weight: 650;
+}
+
+.download-card .btn {
+  width: 100%;
+}
+
+/* =========================================================
+   Privacy, terms, support
+   ========================================================= */
+
+.page {
+  padding-block: var(--space-8) var(--space-section);
+}
+
+.page-wrap {
+  max-width: 46rem;
+}
+
+.page-head h1 {
+  font-size: clamp(2.25rem, 1.5rem + 2.2vw, 3.5rem);
+}
+
+.page-updated {
+  margin-top: var(--space-4);
+  color: var(--ink-3);
+  font-size: var(--fs-small);
+}
+
+.page-related {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3) var(--space-5);
+  margin-top: var(--space-6);
+}
+
+.page-related a[aria-current="page"] {
+  color: var(--ink);
+  pointer-events: none;
+}
+
+.prose {
+  display: grid;
+  gap: var(--space-8);
+  margin-top: var(--space-8);
+}
+
+.prose section {
+  display: grid;
+  gap: var(--space-3);
+}
+
+.prose h2 {
+  font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.5rem);
+}
+
+.prose p,
+.prose li {
+  color: var(--ink-2);
+  line-height: 1.65;
+}
+
+.prose ul {
+  display: grid;
+  gap: var(--space-3);
+  padding-left: 1.15rem;
+}
+
+.page-faq {
+  margin-top: var(--space-8);
+}
+
+.contact-card {
+  display: grid;
+  gap: var(--space-4);
+  margin-top: var(--space-8);
+  padding: var(--space-6);
+}
+
+.contact-card p {
+  color: var(--ink-2);
+}
+
+.contact-card .btn {
+  justify-self: start;
 }
 
 .footer-legal {

@@ -1,34 +1,42 @@
 /**
- * Single source of truth for names, prices, requirements and links.
+ * Single source of truth for names, requirements and links.
  * Change values here; copy in content.js reads from this object.
  * Keep this file free of browser-only APIs: vite.config.js imports it
  * at build time to pre-render the page.
  */
 export const config = {
-  productName: 'Headroom', // Working name — placeholder.
+  productName: 'Headroom',
   companyName: 'Qbatch',
   copyrightYear: 2026,
 
   // Absolute production URL, used for canonical and Open Graph tags.
-  siteUrl: 'https://example.com', // TODO: replace before launch.
+  siteUrl: 'https://headroom.qbatch.com',
+
+  /** Shown on the privacy policy, terms and support page. */
+  policyUpdated: '24 November 2026',
 
   requirements: {
-    chip: 'Apple Silicon (M1 or newer)',
+    chip: 'Apple silicon (M1 or newer)',
     os: 'macOS 14 Sonoma or later',
     minMemory: '8 GB',
     recommendedMemory: '16 GB',
   },
 
-  pricing: {
-    label: 'Planned pricing',
-    currency: '$',
-    free: '0',
-    pro: '24.99',
-    proTerms: 'one-time',
-  },
+  /**
+   * Mac App Store listing. Leave empty until the listing is live;
+   * the download section then tells people to search the store.
+   */
+  appStore: '',
+
+  /**
+   * Public support address. Shown on the support page when set.
+   * Leave empty rather than publishing an address that isn't monitored.
+   */
+  supportEmail: '',
 
   links: {
-    privacy: '#', // TODO: privacy policy URL.
-    contact: '#', // TODO: contact page or mailto: link.
+    privacy: '/privacy',
+    terms: '/terms',
+    support: '/support',
   },
 };

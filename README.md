@@ -1,8 +1,9 @@
 # Headroom — landing page
 
-Marketing site and waitlist for **Headroom** (working name), a native macOS app
-that picks a private, offline AI model for your job, proves it on your own
-example and sets it up without technical questions.
+Marketing site for **Headroom**, a native macOS app. It checks the Mac, shows
+which private offline models fit the job you want, and sets one up. Chat,
+dictation and pictures stay on the Mac. There is no account and no in-app
+subscription.
 
 Vite + vanilla JavaScript. One runtime dependency: `gsap` (ScrollTrigger included).
 No CSS framework, no images/videos/Lottie, no web fonts. Every graphic is HTML,
@@ -78,7 +79,7 @@ headroom-landing/
 | --- | --- |
 | Product name, company, prices, requirements, footer links, site URL | `src/config.js` |
 | Any words on the page (headlines, FAQ, form messages, meta description) | `src/content.js` |
-| Job cards (used by journey, demo and form select) | `jobs` in `src/content.js` |
+| Job cards (used by the journey and the demo) | `jobs` in `src/content.js` |
 | Demo outcomes per memory size/job | `src/data/demo.js` |
 | Colours, type sizes, spacing, shadows, easing | `src/styles/tokens.css` |
 
@@ -90,7 +91,9 @@ benchmark numbers; say "other apps", not competitor names; no Apple logos.
 
 ## Waitlist endpoint
 
-`src/lib/waitlist.js` sends a JSON `POST` to `VITE_WAITLIST_ENDPOINT`:
+The site no longer shows a waitlist form. The app is finished, and the last
+section points at the Mac App Store (`config.appStore`). `src/lib/waitlist.js`
+is still here if a form comes back. It sends a JSON `POST` to `VITE_WAITLIST_ENDPOINT`:
 
 ```json
 { "email": "person@example.com", "job": "write", "source": "landing-page" }
@@ -152,13 +155,13 @@ product. Easing is `cubic-bezier(0.22, 1, 0.36, 1)` (GSAP `expo.out`), with
 
 | Scene | Trigger | Sequence | Reduced motion / no JS |
 | --- | --- | --- | --- |
-| 1 Hero | page load, once | window rises (0.9 s) → scan line sweeps (1.4 s) → three gauges fill and count up (1.3 s) → verdict + check (0.6 s) → morphs into test drive → A/B/C each "think" with a live timer, then type at different speeds → B lifts, "Your pick" badge pops, check draws → Replay button. Pauses off-screen. | Final frame: verdict, all three answers, B picked |
+| 1 Hero | page load, once | window rises (0.9 s) → scan line sweeps (1.4 s) → three gauges fill and count up (1.3 s) → verdict + check (0.6 s) → morphs into the model list → cards settle → B lifts, "Recommended" badge pops, check draws → Replay button. Pauses off-screen. | Final frame: verdict, three models, B recommended |
 | 2 Jargon | scroll (scrubbed) | jargon chips drift (CSS, paused off-screen) → pulled to centre and collide → compress and dissolve → plain line resolves | Struck-through chips above the plain line |
-| 3 How it works | scroll, ≥900 px | 250vh sticky track; progress line scrubs; active step highlights; window cross-fades per step and plays that pane: welcome, meters fill, job cards pop, downloads fill, cards type, check draws, chat streams | Full step list + chat pane. Mobile: vertical timeline with reveals |
+| 3 How it works | scroll, ≥900 px | 200vh sticky track; progress line scrubs; active step highlights; window cross-fades per step and plays that pane: welcome, Mac check, job cards, model list, chat streams | Full step list + chat pane. Mobile: vertical timeline with reveals |
 | 4 Demo | click / keys | memory bar blocks move and resize (700 ms); sentence cross-fades and is announced; first view builds the bar block by block | Same interaction, instant |
 | 5 Privacy | switch | Wi-Fi arcs fade outside-in; airplane and Offline badge settle in; answer re-types; "0 bytes sent" dot pulses calmly | Same states, no typing or pulse |
 | 6 Pillars | reveal | cards fade up with stagger; icons draw stroke by stroke; lift on hover/focus | Icons drawn, cards visible |
-| 7 CTA | on-screen | three soft accent gradients drift slowly (28–40 s); success: label lifts away, check mark draws | No drift; instant states |
+| 7 CTA | on-screen | three soft accent gradients drift slowly (28–40 s) behind the download card | No drift |
 
 Scenes initialise lazily when within ~600 px of the viewport, and loops pause
 off-screen. Each scene has an `sr-only` text description; illustrations are
@@ -180,19 +183,9 @@ off-screen. Each scene has an `sr-only` text description; illustrations are
 
 ## Before launch: placeholders and TODOs
 
-- [ ] Final product name → `config.productName` (currently the placeholder "Headroom").
-- [ ] Production URL → `config.siteUrl` (canonical + Open Graph; currently `https://example.com`).
-- [ ] Privacy policy and contact links → `config.links` (currently `#`).
+- [ ] Mac App Store URL → `config.appStore` (the download section tells people to search until this is set).
+- [ ] Support email → `config.supportEmail` (the support page shows it when set).
 - [ ] Create `public/og-image.png` (1200×630) and delete `public/og-image.txt`.
-- [ ] Set `VITE_WAITLIST_ENDPOINT` (submissions are simulated until then) and confirm CORS.
-- [ ] Write a privacy policy that covers the waitlist email.
-- [ ] Confirm the FAQ download-size answer ("usually a few gigabytes each") with engineering.
-- [ ] The FAQ question "How is this different from ChatGPT?" names a product because
-      the brief listed it verbatim; the answer doesn't name or disparage it. Decide
-      whether to keep it or reword it to "online AI chat services".
-- [ ] Review the illustrative numbers: hero gauges (16 GB, 212 GB free), hero/journey
-      timers (0.9 / 1.8 / 2.6 s), shortlist sizes ("About 2/5/6 GB") and the demo's
-      memory split in `src/data/demo.js`. All are labelled or framed as examples;
-      make sure they stay conservative.
-- [ ] Planned pricing ($24.99 one-time Pro) is labelled "Planned pricing"; update when final.
+- [ ] Have the privacy policy and terms reviewed before the App Store submission.
+- [ ] Review the illustrative numbers: hero gauges (16 GB, 212 GB free) and the model sizes in the hero and journey ("About 2/3/4 GB"). The demo's memory split in `src/data/demo.js` is shared with the Mac app and must stay in lockstep with it.
 - [ ] Run Lighthouse (target 95+ for Performance, Accessibility, SEO) and a VoiceOver pass.

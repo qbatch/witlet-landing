@@ -50,13 +50,17 @@ function initScenes() {
 
 function initHeader() {
   const header = qs('[data-header]');
+  if (!header) return;
   const toggle = qs('.menu-toggle', header);
   const menu = qs('#mobile-menu');
+  const sentinel = qs('.scroll-sentinel');
 
   // Blurred background once the page has scrolled past the top.
-  cleanups.push(
-    observeVisibility(qs('.scroll-sentinel'), (atTop) => header.classList.toggle('is-scrolled', !atTop)),
-  );
+  if (sentinel) {
+    cleanups.push(
+      observeVisibility(sentinel, (atTop) => header.classList.toggle('is-scrolled', !atTop)),
+    );
+  }
 
   const setOpen = (open) => {
     menu.hidden = !open;
@@ -80,19 +84,11 @@ function initHeader() {
   });
 }
 
-/** "Join the waitlist" links also move keyboard focus to the email field. */
-function initWaitlistLinks() {
-  const email = qs('#wl-email');
-  document.addEventListener('click', (event) => {
-    if (event.target.closest('a[href="#waitlist"]')) email.focus({ preventScroll: true });
-  });
-}
-
 initHeader();
-initWaitlistLinks();
-cleanups.push(initAccordion(qs('[data-accordion]')));
+const accordion = qs('[data-accordion]');
+if (accordion) cleanups.push(initAccordion(accordion));
 cleanups.push(revealOnEnter(qsa('[data-reveal]')));
-initScenes();
+if (qsa('[data-scene]').length) initScenes();
 document.documentElement.classList.add('is-booted');
 
 if (import.meta.hot) {

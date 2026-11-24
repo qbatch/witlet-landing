@@ -13,6 +13,12 @@ const PILLARS = {
   speech: '<path d="M5.5 4.5h13a1.5 1.5 0 0 1 1.5 1.5v8.5a1.5 1.5 0 0 1-1.5 1.5H11l-4.5 3.5V16H5.5A1.5 1.5 0 0 1 4 14.5V6a1.5 1.5 0 0 1 1.5-1.5z" pathLength="1"/><path d="M8 9h8M8 12h5" pathLength="1"/>',
   lock: '<rect x="5" y="10.5" width="14" height="10" rx="2.5" pathLength="1"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3" pathLength="1"/><path d="M12 14.5v2.5" pathLength="1"/>',
   rise: '<path d="M4 17.5l5.5-5.5 3.5 3.5 7-7" pathLength="1"/><path d="M15 8.5h5v5" pathLength="1"/>',
+  mic: '<rect x="9" y="3" width="6" height="11" rx="3" pathLength="1"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3.5M8.5 20.5h7" pathLength="1"/>',
+  photo: '<rect x="3.5" y="5" width="17" height="14" rx="2.5" pathLength="1"/><circle cx="9" cy="10" r="1.5" pathLength="1"/><path d="M3.5 16.5l4.2-4 3 2.8 3.2-3.3 6.6 4.5" pathLength="1"/>',
+  chats: '<path d="M5 7h9.5A1.5 1.5 0 0 1 16 8.5V13H9.2L6.5 15.2V13H5A1.5 1.5 0 0 1 3.5 11.5v-3A1.5 1.5 0 0 1 5 7z" pathLength="1"/><path d="M8.5 7V5.5A1.5 1.5 0 0 1 10 4h8.5A1.5 1.5 0 0 1 20 5.5V11a1.5 1.5 0 0 1-1.5 1.5H18" pathLength="1"/>',
+  keys: '<rect x="3" y="6" width="18" height="12" rx="2" pathLength="1"/><path d="M7 10h.01M12 10h.01M17 10h.01M8 14h8" pathLength="1"/>',
+  meter: '<circle cx="12" cy="12" r="8" pathLength="1"/><path d="M12 12.5V7.5" pathLength="1"/>',
+  models: '<path d="M4 7.5h16M4 12h16M4 16.5h10" pathLength="1"/>',
 };
 
 export const icon = {

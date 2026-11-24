@@ -4,8 +4,10 @@
  * the matching function's output at dev and build time. The page therefore
  * ships as real HTML: instant first paint, no layout shift, good SEO.
  */
+import { article } from './article.js';
 import { footer, head, header, skipLink } from './chrome.js';
-import { demo, faq, hero, journey, personas, pillars, pricing, privacy, problem, waitlist } from './sections.js';
+import { demo, download, faq, hero, included, journey, personas, pillars, privacy, problem } from './sections.js';
+import { setPageContext } from './site.js';
 
 export const regions = {
   head,
@@ -16,17 +18,19 @@ export const regions = {
   journey,
   demo,
   pillars,
+  included,
   privacy,
   personas,
-  pricing,
   faq,
-  waitlist,
+  download,
   footer,
+  article,
 };
 
-export function renderPage(html) {
-  return html.replace(/<!--\s*render:(\w+)\s*-->/g, (marker, name) => {
-    if (!regions[name]) throw new Error(`Unknown render region "${name}" in index.html`);
-    return regions[name]();
+export function renderPage(html, ctx = {}) {
+  setPageContext(ctx);
+  return html.replace(/<!--\s*render:(\w+)(?:\s+([\w-]+))?\s*-->/g, (marker, name, arg) => {
+    if (!regions[name]) throw new Error(`Unknown render region "${name}"`);
+    return regions[name](arg);
   });
 }

@@ -9,7 +9,7 @@ import { appWindow } from '../components/appWindow.js';
 import { esc, typewriterMarkup } from '../lib/dom.js';
 import { icon } from './icons.js';
 
-/* ---------- Scene 1: hero, Mac check → test drive ---------- */
+/* ---------- Scene 1: hero, Mac check → recommended models ---------- */
 
 export function heroVisual() {
   const v = content.hero.visual;
@@ -30,13 +30,14 @@ export function heroVisual() {
   const cards = v.cards
     .map(
       (c) => `
-      <div class="hv-card${c.id === 'B' ? ' is-picked' : ''}" data-card="${c.id}" data-wait="${c.wait}" data-typing="${c.typing}">
+      <div class="hv-card${c.recommended ? ' is-picked' : ''}" data-card="${c.id}">
         <div class="hv-card-head">
           <span class="hv-card-id">${c.id}</span>
-          <span class="hv-timer">${esc(v.timer.replace('{s}', c.wait.toFixed(1)))}</span>
+          <span class="hv-size">${esc(c.size)}</span>
         </div>
-        ${typewriterMarkup(c.reply, 'p', 'hv-reply')}
-        ${c.id === 'B' ? `<span class="hv-badge">${icon.check('icon hv-badge-check')}${esc(v.pick)}</span>` : ''}
+        <p class="hv-fit">${esc(c.fit)}</p>
+        <p class="hv-speed">${esc(c.speed)}</p>
+        ${c.recommended ? `<span class="hv-badge">${icon.check('icon hv-badge-check')}${esc(v.pick)}</span>` : ''}
       </div>`,
     )
     .join('');
@@ -50,7 +51,7 @@ export function heroVisual() {
         <div class="hv-gauges">${gauges}</div>
       </div>
       <div class="hv-drive">
-        <p class="hv-prompt"><span class="hv-prompt-label">${esc(v.promptLabel)}</span><span>“${esc(v.prompt)}”</span></p>
+        <p class="hv-prompt"><span class="hv-prompt-label">${esc(v.promptLabel)}</span><span>${esc(v.prompt)}</span></p>
         <div class="hv-cards has-pick">${cards}</div>
       </div>
     </div>`;
@@ -82,7 +83,7 @@ export function jargonVisual() {
     </div>`;
 }
 
-/* ---------- Scene 3: one window, seven panes ---------- */
+/* ---------- Scene 3: one window, five panes ---------- */
 
 const meterRows = (rows) =>
   rows
@@ -116,60 +117,28 @@ function panes() {
       <div class="job-grid">
         ${jobs.map((j) => `<span class="job-card${j.id === p.questions.selected ? ' is-selected' : ''}">${esc(j.label)}</span>`).join('')}
       </div>
-      <div class="mock-field">
-        <span class="mock-field-label">${esc(p.questions.exampleLabel)}</span>
-        <span class="mock-field-text">${esc(p.questions.example)}</span>
-      </div>
-      <div class="mock-slider">
-        <span>${esc(p.questions.faster)}</span>
-        <span class="mock-slider-track"><span class="mock-slider-thumb"></span></span>
-        <span>${esc(p.questions.smarter)}</span>
-      </div>
+      <p class="pane-caption">${esc(p.questions.caption)}</p>
     </div>`,
 
-    `<div class="pane pane-shortlist">
-      <p class="pane-title">${esc(p.shortlist.title)}</p>
-      <div class="shortlist">
-        ${p.shortlist.items
+    `<div class="pane pane-models">
+      <p class="pane-title">${esc(p.models.title)}</p>
+      <div class="model-list">
+        ${p.models.items
           .map(
             (item) => `
-          <div class="shortlist-row">
+          <div class="model-row${item.recommended ? ' is-recommended' : ''}">
             <span class="letter">${item.id}</span>
-            <span class="shortlist-note">${esc(item.note)}</span>
+            <span class="model-copy">
+              <span class="shortlist-note">${esc(item.note)}</span>
+              <span class="model-fit">${esc(item.fit)}</span>
+            </span>
             <span class="shortlist-size">${esc(item.size)}</span>
-            <span class="download"><span class="download-fill"></span></span>
+            ${item.recommended ? `<span class="model-badge">${icon.check('icon')}${esc(p.models.pick)}</span>` : ''}
           </div>`,
           )
           .join('')}
       </div>
-      <p class="pane-foot">${icon.check('icon pane-foot-icon')}${esc(p.shortlist.footer)}</p>
-    </div>`,
-
-    `<div class="pane pane-drive">
-      <p class="pane-prompt">“${esc(p.drive.prompt)}”</p>
-      <div class="mini-cards">
-        ${p.drive.cards
-          .map(
-            (c) => `
-          <div class="mini-card${c.id === 'B' ? ' is-picked' : ''}">
-            <span class="mini-card-head"><span class="letter">${c.id}</span><span class="mini-timer">${esc(c.timer)}</span></span>
-            ${typewriterMarkup(c.reply, 'p', 'mini-reply')}
-            ${c.id === 'B' ? `<span class="mini-badge">${icon.check('icon')}${esc(p.drive.pick)}</span>` : ''}
-          </div>`,
-          )
-          .join('')}
-      </div>
-    </div>`,
-
-    `<div class="pane pane-setup">
-      <span class="setup-mark">
-        <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="setup-ring" cx="32" cy="32" r="28" pathLength="1"/><path class="setup-check" d="M20 33l8 8 16-17" pathLength="1"/></svg>
-      </span>
-      <p class="pane-title">${esc(p.setup.title)}</p>
-      <ul class="setup-list" role="list">
-        ${p.setup.items.map((item) => `<li>${icon.check('icon')}${esc(item)}</li>`).join('')}
-      </ul>
-      <span class="mock-btn">${esc(p.setup.button)}</span>
+      <p class="pane-foot">${icon.check('icon pane-foot-icon')}${esc(p.models.footer)}</p>
     </div>`,
 
     `<div class="pane pane-chat">

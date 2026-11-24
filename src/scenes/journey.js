@@ -1,24 +1,21 @@
 /**
- * Scene 3 — How it works. Desktop (≥ 900px): a 250vh track with a sticky
- * viewport (CSS). ScrollTrigger maps the track's progress to the active
- * step: the progress line scrubs, the step list highlights, and the one
- * app window cross-fades to that step's pane, which then plays its own
- * short animation:
- *   welcome → check (meters fill) → questions (job cards pop in) →
- *   shortlist (download bars fill) → test drive (cards type) →
- *   setup (check mark draws) → chat (messages stream in, Offline badge).
+ * Scene 3 — How it works. Desktop (≥ 900px): a sticky track.
+ * ScrollTrigger maps the track's progress to the active step: the progress
+ * line scrubs, the step list highlights, and the one app window cross-fades
+ * to that step's pane, which then plays its own short animation:
+ *   welcome → Mac check → your task → choose a model → chat.
  * Mobile: no pinning; steps reveal one by one (data-reveal in main.js).
  * Reduced motion: the static list plus the final (chat) pane.
  */
 import { createTypewriter, qs, qsa } from '../lib/dom.js';
 import { DUR, GSAP_EASE, STAGGER, prefersReducedMotion } from '../lib/motion.js';
-import { DRAW, ScrollTrigger, gsap, typeIn } from '../lib/tween.js';
+import { ScrollTrigger, gsap, typeIn } from '../lib/tween.js';
 
 const ratioOf = (el) => parseFloat(el.style.getPropertyValue('--ratio'));
 
 /** One builder per pane. Each returns a fresh timeline for that pane. */
 function paneBuilders(panes) {
-  const [welcome, check, questions, shortlist, drive, setup, chat] = panes;
+  const [welcome, check, questions, models, chat] = panes;
   const ease = GSAP_EASE;
 
   return [
@@ -46,45 +43,14 @@ function paneBuilders(panes) {
         .timeline()
         .from(qs('.pane-title', questions), { autoAlpha: 0, y: 8, duration: DUR.med, ease })
         .from(qsa('.job-card', questions), { autoAlpha: 0, scale: 0.85, duration: 0.5, stagger: 0.06, ease: 'back.out(1.8)' }, 0.1)
-        .from(qs('.mock-field', questions), { autoAlpha: 0, y: 8, duration: DUR.med, ease }, '-=0.2')
-        .from(qs('.mock-slider-thumb', questions), { x: -60, duration: 0.8, ease }, '-=0.2'),
+        .from(qs('.pane-caption', questions), { autoAlpha: 0, y: 8, duration: DUR.med, ease }, '-=0.15'),
 
     () =>
       gsap
         .timeline()
-        .from(qsa('.pane-title, .shortlist-row', shortlist), { autoAlpha: 0, y: 10, duration: DUR.med, stagger: STAGGER, ease })
-        // Different sizes download at different speeds.
-        .fromTo(
-          qsa('.download-fill', shortlist),
-          { scaleX: 0 },
-          { scaleX: 1, duration: (i) => [1, 1.6, 2][i] ?? 1.6, ease: 'power1.inOut', stagger: 0.1 },
-          0.25,
-        )
-        .from(qs('.pane-foot', shortlist), { autoAlpha: 0, y: 6, duration: DUR.med, ease }),
-
-    () => {
-      const cards = qsa('.mini-card', drive);
-      const picked = cards[1]; // B
-      const badge = qs('.mini-badge', drive);
-      picked.classList.remove('is-picked');
-      gsap.set(badge, { autoAlpha: 0, scale: 0.6 });
-      const tl = gsap
-        .timeline()
-        .from(qs('.pane-prompt', drive), { autoAlpha: 0, y: 8, duration: DUR.med, ease })
-        .from(cards, { autoAlpha: 0, y: 12, duration: DUR.med, stagger: STAGGER, ease }, 0.1);
-      // Same request, visibly different speeds.
-      cards.forEach((card, i) => tl.add(typeIn(createTypewriter(qs('.type', card)), [0.9, 1.4, 2][i]), 0.4 + i * 0.35));
-      return tl
-        .call(() => picked.classList.add('is-picked'), null, 3)
-        .to(badge, { autoAlpha: 1, scale: 1, duration: 0.45, ease: 'back.out(2)' }, 3.1);
-    },
-
-    () =>
-      gsap
-        .timeline()
-        .fromTo(qs('.setup-ring', setup), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.9, ease: 'power2.inOut', ...DRAW })
-        .fromTo(qs('.setup-check', setup), { strokeDashoffset: 1 }, { strokeDashoffset: 0, duration: 0.5, ease, ...DRAW }, '-=0.2')
-        .from(qsa('.pane-title, .setup-list li, .mock-btn', setup), { autoAlpha: 0, y: 8, duration: DUR.med, stagger: STAGGER, ease }, '-=0.3'),
+        .from(qsa('.pane-title, .model-row', models), { autoAlpha: 0, y: 10, duration: DUR.med, stagger: STAGGER, ease })
+        .from(qs('.model-badge', models), { autoAlpha: 0, scale: 0.6, duration: 0.45, ease: 'back.out(2)' }, '-=0.2')
+        .from(qs('.pane-foot', models), { autoAlpha: 0, y: 6, duration: DUR.med, ease }),
 
     () => {
       const reply = qs('.bubble--ai', chat);
