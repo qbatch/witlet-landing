@@ -370,7 +370,7 @@ export const content = {
           ],
           list: [
             `Downloading the model you chose, and any model you add later. The files come from Hugging Face, pinned to a fixed version and checked against stored checksums. That connection is what delivers the files. ${name} doesn’t add an account or an analytics payload to it. The host that serves the files can see a normal download request, including an IP address, the way any download works.`,
-            `Once a day at most, if you are online, a small signed list of models from ${config.siteUrl.replace('https://', '')}. The request sends no cookies and nothing about you or your Mac. The user agent is the word “Headroom”. If the list is missing, unsigned or older than the one the app already has, the app keeps what it has and says nothing.`,
+            `Once a day at most, if you are online, a small signed list of models from ${config.siteUrl.replace('https://', '')}. The request sends no cookies and nothing about you or your Mac. The user agent is the word “${name}”. If the list is missing, unsigned or older than the one the app already has, the app keeps what it has and says nothing.`,
           ],
         },
         {

@@ -130,7 +130,7 @@ The site and the Mac app's model catalog are served from Cloudflare Pages at
 
 ### Model catalog (`public/catalog/v1.json`)
 
-The Headroom Mac app reads `https://headroom.qbatch.com/catalog/v1.json` at most once a day. It only uses the file if its signature matches a key built into the app. Otherwise it keeps its built-in catalog.
+The Witlet Mac app reads `https://headroom.qbatch.com/catalog/v1.json` at most once a day. It only uses the file if its signature matches a key built into the app. Otherwise it keeps its built-in catalog.
 
 - **Never edit `v1.json` by hand.** Any change breaks the signature. Make it in the Mac app repo with `node Scripts/publish-catalog.mjs --key-id 2026-11`, then commit and push this repo.
 - **Never move or rename it.** Every shipped copy of the app keeps reading that exact path. A future format would go next to it as `v2.json`.

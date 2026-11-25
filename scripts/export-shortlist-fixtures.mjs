@@ -3,7 +3,7 @@
  * Exports shortlist-fixtures.json from src/data/demo.js: every memory size × job, with the
  * memory estimate (the bar and its sentence) and the A/B/C shortlist, raw and as displayed.
  *
- * The Headroom Mac app's tests load this file and check that its Swift port gives exactly
+ * The Witlet Mac app's tests load this file and check that its Swift port gives exactly
  * the same answers, so the app and the website never drift apart.
  *
  *   npm run fixtures                          # writes fixtures/shortlist-fixtures.json
