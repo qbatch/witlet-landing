@@ -119,18 +119,18 @@ Set environment variables in the host's dashboard (Vite inlines them at build ti
 ### Cloudflare Pages (production)
 
 The site and the Mac app's model catalog are served from Cloudflare Pages at
-`https://headroom.qbatch.com`.
+`https://witlet.qbatch.com`.
 
 1. In Cloudflare, go to *Workers & Pages ▸ Create ▸ Pages ▸ Connect to Git* and choose this repository.
 2. Use these build settings: framework preset **None** (or Vite), build command `npm run build`, output directory `dist`. Node comes from `.nvmrc`.
-3. In *Custom domains*, add `headroom.qbatch.com`. If `qbatch.com` uses Cloudflare DNS, the record is created for you. Otherwise, add a `CNAME` from `headroom` to `<project>.pages.dev` at your DNS provider.
+3. In *Custom domains*, add `witlet.qbatch.com`. If `qbatch.com` uses Cloudflare DNS, the record is created for you. Otherwise, add a `CNAME` from `witlet` to `<project>.pages.dev` at your DNS provider.
 4. Every push to the production branch deploys. Pull requests get preview URLs.
 
 `public/_headers` sets the catalog's content type and a 5-minute cache. Cloudflare adds ETags, so the app's daily check is usually answered with `304 Not Modified`.
 
 ### Model catalog (`public/catalog/v1.json`)
 
-The Witlet Mac app reads `https://headroom.qbatch.com/catalog/v1.json` at most once a day. It only uses the file if its signature matches a key built into the app. Otherwise it keeps its built-in catalog.
+The Witlet Mac app reads `https://witlet.qbatch.com/catalog/v1.json` at most once a day. It only uses the file if its signature matches a key built into the app. Otherwise it keeps its built-in catalog.
 
 - **Never edit `v1.json` by hand.** Any change breaks the signature. Make it in the Mac app repo with `node Scripts/publish-catalog.mjs --key-id 2026-11`, then commit and push this repo.
 - **Never move or rename it.** Every shipped copy of the app keeps reading that exact path. A future format would go next to it as `v2.json`.
