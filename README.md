@@ -23,7 +23,7 @@ Requires Node 20.19+ or 22.12+ (Vite 8).
 ## Project structure
 
 ```
-headroom-landing/
+witlet-landing/
 ├── index.html                # semantic shell: <section>s with ids + data-scene, render markers
 ├── vite.config.js            # base path from VITE_BASE_PATH + the pre-render plugin
 ├── .env.example              # VITE_WAITLIST_ENDPOINT, VITE_BASE_PATH

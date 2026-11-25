@@ -9,7 +9,7 @@ import { renderPage } from './src/templates/index.js';
  */
 function prerender(base) {
   return {
-    name: 'headroom-prerender',
+    name: 'witlet-prerender',
     transformIndexHtml: {
       order: 'pre',
       handler(html, ctx) {
@@ -23,7 +23,7 @@ export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), 'VITE_');
   const base = env.VITE_BASE_PATH || '/';
   return {
-    // e.g. VITE_BASE_PATH=/headroom-landing/ for GitHub Pages project sites.
+    // e.g. VITE_BASE_PATH=/witlet-landing/ for GitHub Pages project sites.
     base,
     plugins: [prerender(base)],
     build: {

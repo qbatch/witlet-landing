@@ -31,7 +31,7 @@ for (const memory of memorySizes) {
 }
 
 const fixtures = {
-  source: 'headroom-landing/src/data/demo.js',
+  source: 'witlet-landing/src/data/demo.js',
   memorySizes,
   jobs: jobs.map((j) => j.id),
   cases,
