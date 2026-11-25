@@ -53,7 +53,7 @@ export function header() {
     <header class="site-header" data-header>
       <div class="container header-inner">
         <a class="wordmark" href="${esc(home)}" aria-label="${esc(nav.homeLabel)}">
-          ${logoMark}<span>${esc(config.productName)}</span>
+          ${logoMark(pageHref('/witlet-mark.png'))}<span>${esc(config.productName)}</span>
         </a>
         <nav class="nav" aria-label="Main">
           <ul class="nav-links" role="list">${navLinks('nav-link')}</ul>
@@ -82,7 +82,7 @@ export function footer() {
     <footer class="site-footer">
       <div class="container footer-inner">
         <div class="footer-brand">
-          <a class="wordmark" href="${esc(home)}" aria-label="${esc(content.nav.homeLabel)}">${logoMark}<span>${esc(config.productName)}</span></a>
+          <a class="wordmark" href="${esc(home)}" aria-label="${esc(content.nav.homeLabel)}">${logoMark(pageHref('/witlet-mark.png'))}<span>${esc(config.productName)}</span></a>
           <p class="muted">${esc(f.tagline)}</p>
         </div>
         <ul class="footer-links" role="list">

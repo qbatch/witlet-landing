@@ -1,6 +1,6 @@
-# Headroom — landing page
+# Witlet — landing page
 
-Marketing site for **Headroom**, a native macOS app. It checks the Mac, shows
+Marketing site for **Witlet** (**Witlet: Private AI Assistant** on the Mac App Store), a native macOS app. It checks the Mac, shows
 which private offline models fit the job you want, and sets one up. Chat,
 dictation and pictures stay on the Mac. There is no account and no in-app
 subscription.
@@ -28,7 +28,9 @@ headroom-landing/
 ├── vite.config.js            # base path from VITE_BASE_PATH + the pre-render plugin
 ├── .env.example              # VITE_WAITLIST_ENDPOINT, VITE_BASE_PATH
 ├── public/
-│   ├── favicon.svg
+│   ├── favicon.png           # Witlet mark, 64 px (from the Mac app's Branding/witlet)
+│   ├── apple-touch-icon.png  # Witlet app icon tile, 180 px
+│   ├── witlet-mark.png       # header and footer logo, 128 px
 │   └── og-image.txt          # replace with og-image.png (1200×630) before launch
 └── src/
     ├── main.js               # boot: styles, header, FAQ, reveals, lazy scene registry

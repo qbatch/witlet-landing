@@ -37,11 +37,9 @@ export const icon = {
     svg('<path d="M10.5 3.5c0-.8.7-1.5 1.5-1.5s1.5.7 1.5 1.5V9l7 4v2l-7-2v4.5l2.5 2V21L12 20l-4 1v-1.5l2.5-2V13l-7 2v-2l7-4z"/>', 'icon icon-airplane'),
 };
 
-/** Wordmark glyph: a memory bar with room to spare. */
-// The Headroom mark: an H with a low crossbar and a dot in the space above it. Generated
-// from the app's Brand.swift (headroom-macOS: Branding/svg/headroom-mark.svg); ink and
-// accent follow the theme, so it's ink and deep teal on light, paper and bright teal on dark.
-export const logoMark = `<svg class="logo-mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false">
-  <path fill="var(--ink)" d="M22 50L22 89C22 95.08 17.08 100 11 100L11 100C4.92 100 0 95.08 0 89L0 11C0 4.92 4.92 0 11 0L11 0C17.08 0 22 4.92 22 11ZM100 50L100 89C100 95.08 95.08 100 89 100L89 100C82.92 100 78 95.08 78 89L78 11C78 4.92 82.92 0 89 0L89 0C95.08 0 100 4.92 100 11ZM11 64L89 64L89 79L11 79Z"/>
-  <circle fill="var(--accent)" cx="50.00" cy="33.00" r="12.50"/>
-</svg>`;
+/** Wordmark glyph: the Witlet mark (the W, speech bubble and star on the app icon's tile).
+ * public/witlet-mark.png comes from the Mac app's Branding/witlet/witlet-mark-128.png, rendered
+ * by Scripts/brand/render.sh. Decorative: the link around it carries the name. */
+export const logoMark = (src) =>
+  `<img class="logo-mark" src="${src}" width="128" height="128" alt="" decoding="async" />`;
+

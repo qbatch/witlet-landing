@@ -5,7 +5,9 @@
  * at build time to pre-render the page.
  */
 export const config = {
-  productName: 'Headroom',
+  productName: 'Witlet',
+  /** The full name on the Mac App Store (and in the app's Info.plist). */
+  appStoreName: 'Witlet: Private AI Assistant',
   companyName: 'Qbatch',
   copyrightYear: 2026,
 

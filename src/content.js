@@ -306,7 +306,7 @@ export const content = {
       'Setup is five steps. The download is the part that takes a while.',
     ],
     storeCta: 'View on the Mac App Store',
-    storeFallback: `Search the Mac App Store for ${name} by ${config.companyName}.`,
+    storeFallback: `Search the Mac App Store for ${config.appStoreName} by ${config.companyName}.`,
     support: 'Questions first? Read the support page.',
   },
 
@@ -369,7 +369,7 @@ export const content = {
             'The network is used for two things, and chat itself is not one of them.',
           ],
           list: [
-            'Downloading the model you chose, and any model you add later. The files come from Hugging Face, pinned to a fixed version and checked against stored checksums. That connection is what delivers the files. Headroom doesn’t add an account or an analytics payload to it. The host that serves the files can see a normal download request, including an IP address, the way any download works.',
+            `Downloading the model you chose, and any model you add later. The files come from Hugging Face, pinned to a fixed version and checked against stored checksums. That connection is what delivers the files. ${name} doesn’t add an account or an analytics payload to it. The host that serves the files can see a normal download request, including an IP address, the way any download works.`,
             `Once a day at most, if you are online, a small signed list of models from ${config.siteUrl.replace('https://', '')}. The request sends no cookies and nothing about you or your Mac. The user agent is the word “Headroom”. If the list is missing, unsigned or older than the one the app already has, the app keeps what it has and says nothing.`,
           ],
         },
@@ -494,7 +494,7 @@ export const content = {
         },
         {
           q: 'What are the five setup steps?',
-          a: 'Welcome, Your Mac, Your task, Choose a model, then Download. Setup shows once. After the download finishes, the app opens on the chat. You can run setup again from the Headroom menu. It asks first.',
+          a: 'Welcome, Your Mac, Your task, Choose a model, then Download. Setup shows once. After the download finishes, the app opens on the chat. You can run setup again from the app menu (Start Setup Again). It asks first.',
         },
         {
           q: 'How do I choose a model?',
@@ -522,11 +522,11 @@ export const content = {
         },
         {
           q: 'Can it look at pictures?',
-          a: 'Yes, when the model in use can see. Attach with the picture button (Shift-Command-A), or paste or drop pictures onto the message box. Up to four a message. They are shrunk on your Mac and saved with that chat. A text-only model doesn’t show the picture button.',
+          a: 'Yes, when the model in use can see. Attach them with the paperclip (Shift-Command-A), or paste or drop them onto the message box. Up to four a message. They are shrunk on your Mac and saved with that chat. A text-only model can still read documents, but not pictures.',
         },
         {
           q: 'Can I hand it a PDF or a Word file?',
-          a: 'Not as a file. Paste the text into the chat. Summarise documents is one of the jobs, and it works on the text you give it. Pictures are the files the chat can take directly, and only with a model that can see.',
+          a: `Yes. Click the paperclip in the message box (Shift-Command-A), drop files on it, or copy them in the Finder and paste. ${name} reads PDFs (scanned pages too, with text recognition on your Mac), Word, RTF, HTML, Markdown, plain text and code, and Excel, CSV and TSV spreadsheets. It turns them into text on your Mac, so this works with every model. A message can carry up to three documents of up to 25 MB each. Numbers files and the older .xls format can’t be read: export them as Excel or CSV first. Nothing is uploaded.`,
         },
         {
           q: 'What can I do in the chat?',
@@ -534,7 +534,7 @@ export const content = {
         },
         {
           q: 'Where are my chats kept?',
-          a: 'On this Mac, inside the app. They are not uploaded and not synced by us. Deleting a chat removes it from the app. Removing the app can remove them all.',
+          a: 'On this Mac, inside the app. They are not uploaded and not synced by us. Deleting a chat removes it from the app. Settings ▸ About ▸ Delete All Data deletes every chat, downloaded model and setting at once.',
         },
         {
           q: 'Do you collect my data?',
@@ -542,7 +542,7 @@ export const content = {
         },
         {
           q: 'How is this different from an online chatbot?',
-          a: 'An online chatbot runs on someone else’s computers, so what you type leaves your Mac. Headroom runs the model locally. After the download it works with no connection, and there is no account.',
+          a: `An online chatbot runs on someone else’s computers, so what you type leaves your Mac. ${name} runs the model locally. After the download it works with no connection, and there is no account.`,
         },
         {
           q: 'The app won’t get past setup. What should I check?',
