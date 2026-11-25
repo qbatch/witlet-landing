@@ -171,7 +171,7 @@ export const content = {
     memoryLabel: 'Memory in your Mac',
     jobLabel: 'What you want help with',
     barLabel: 'How memory might be shared',
-    segments: { os: 'macOS', apps: 'Your apps', model: 'AI model', headroom: 'Headroom' },
+    segments: { os: 'macOS', apps: 'Your apps', model: 'AI model', headroom: 'Room to spare' },
     amount: 'about {n} GB',
     amountSmall: 'under 1 GB',
     shortlist: {
