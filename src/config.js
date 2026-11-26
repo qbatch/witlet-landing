@@ -37,8 +37,8 @@ export const config = {
   supportEmail: '',
 
   links: {
-    privacy: '/privacy',
-    terms: '/terms',
-    support: '/support',
+    privacy: '/privacy.html',
+    terms: '/terms.html',
+    support: '/support.html',
   },
 };

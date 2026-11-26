@@ -116,17 +116,28 @@ mailing-list provider's JSON endpoint.
 
 Set environment variables in the host's dashboard (Vite inlines them at build time).
 
-### Cloudflare Pages (production)
+### GitHub Pages (production)
 
-The site and the Mac app's model catalog are served from Cloudflare Pages at
-`https://witlet.qbatch.com`.
+The site and the Mac app's model catalog are served from GitHub Pages at
+`https://witlet.qbatch.com`. `.github/workflows/deploy-pages.yml` builds and
+deploys `dist/` on every push to `main`, and can be run by hand from the
+*Actions* tab.
 
-1. In Cloudflare, go to *Workers & Pages ▸ Create ▸ Pages ▸ Connect to Git* and choose this repository.
-2. Use these build settings: framework preset **None** (or Vite), build command `npm run build`, output directory `dist`. Node comes from `.nvmrc`.
-3. In *Custom domains*, add `witlet.qbatch.com`. If `qbatch.com` uses Cloudflare DNS, the record is created for you. Otherwise, add a `CNAME` from `witlet` to `<project>.pages.dev` at your DNS provider.
-4. Every push to the production branch deploys. Pull requests get preview URLs.
+1. In the repository, open *Settings ▸ Pages* and set *Source* to **GitHub Actions**.
+2. Under *Custom domain*, enter `witlet.qbatch.com` and save. At the DNS provider for
+   `qbatch.com`, add a `CNAME` from `witlet` to `ali-mustafa-qbatch.github.io`.
+   No `CNAME` file is needed: Pages ignores it for sites deployed by a workflow.
+3. Once the certificate is issued, turn on **Enforce HTTPS**.
 
-`public/_headers` sets the catalog's content type and a 5-minute cache. Cloudflare adds ETags, so the app's daily check is usually answered with `304 Not Modified`.
+The workflow reads the base path from Pages, so the build is right for the custom
+domain (`/`) and for `https://ali-mustafa-qbatch.github.io/witlet-landing/` alike.
+Links to the policy and support pages end in `.html` (`/privacy.html`, `/terms.html`,
+`/support.html`), the files Pages serves, and the canonical URLs match. The Mac app
+links to the same addresses.
+
+Pages doesn't read `public/_headers`. It serves the catalog as `application/json`
+with its own short cache and an ETag, so the app's daily check is usually answered
+with `304 Not Modified`, and a new catalog reaches everyone within minutes.
 
 ### Model catalog (`public/catalog/v1.json`)
 
@@ -134,16 +145,17 @@ The Witlet Mac app reads `https://witlet.qbatch.com/catalog/v1.json` at most onc
 
 - **Never edit `v1.json` by hand.** Any change breaks the signature. Make it in the Mac app repo with `node Scripts/publish-catalog.mjs --key-id 2026-11`, then commit and push this repo.
 - **Never move or rename it.** Every shipped copy of the app keeps reading that exact path. A future format would go next to it as `v2.json`.
-- `npm run build` runs `scripts/check-catalog.mjs`, which checks the signature against `catalog-keys.json` (public keys only). If the file is missing, edited or signed with an unknown key, the build fails and Cloudflare keeps serving the last good deploy. Run `npm run check:catalog` to check `public/` without building.
+- `npm run build` runs `scripts/check-catalog.mjs`, which checks the signature against `catalog-keys.json` (public keys only). If the file is missing, edited or signed with an unknown key, the build fails, nothing is deployed, and Pages keeps serving the last good site. Run `npm run check:catalog` to check `public/` without building.
 
 ### Other hosts
 
-- **Netlify**: build command `npm run build`, publish directory `dist`.
-- **Vercel**: `vercel.json` builds `dist/` and turns on clean URLs, so `/privacy`, `/terms` and `/support` serve the matching pages. Node 22 is required (Vite 8). Redeploy after this file is on the branch Vercel builds.
-- **GitHub Pages**: for a project site at `https://<user>.github.io/<repo>/`, build
-  with `VITE_BASE_PATH=/<repo>/ npm run build` and publish `dist/` (for example with
-  the `actions/upload-pages-artifact` + `actions/deploy-pages` workflow). A custom
-  domain or user site needs no base path.
+- **Cloudflare Pages** or **Netlify**: build command `npm run build`, output
+  directory `dist`. Both apply `public/_headers` (the catalog's content type and a
+  5-minute cache).
+
+Whichever host serves `witlet.qbatch.com`, the catalog must stay at
+`https://witlet.qbatch.com/catalog/v1.json`, and the policy pages at their `.html`
+addresses: shipped copies of the Mac app open them.
 
 ## Design and motion
 

@@ -323,7 +323,7 @@ export const content = {
 
   pages: {
     privacy: {
-      path: '/privacy',
+      path: config.links.privacy,
       metaTitle: `Privacy policy — ${name}`,
       metaDescription: `What ${name} for Mac does with your information: chats, pictures and dictation stay on your Mac. No account and no analytics.`,
       eyebrow: 'Privacy policy',
@@ -402,7 +402,7 @@ export const content = {
     },
 
     terms: {
-      path: '/terms',
+      path: config.links.terms,
       metaTitle: `Terms of use — ${name}`,
       metaDescription: `The user agreement for ${name} on the Mac and for this website. Your chats stay on your Mac. Answers can be wrong.`,
       eyebrow: 'Terms of use',
@@ -473,7 +473,7 @@ export const content = {
     },
 
     support: {
-      path: '/support',
+      path: config.links.support,
       metaTitle: `Support — ${name}`,
       metaDescription: `Answers for ${name} on the Mac: setup, offline chat, dictation, pictures, models, and privacy.`,
       eyebrow: 'Support',

@@ -36,6 +36,6 @@ export function pageHref(href) {
 export function isCurrent(href) {
   if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http')) return false;
   const path = href.startsWith('/') ? href : `/${href}`;
-  const clean = path.length > 1 && path.endsWith('/') ? path.slice(0, -1) : path;
+  const clean = path.replace(/\.html$/, '').replace(/\/$/, '') || '/';
   return currentPath() === clean;
 }
