@@ -119,13 +119,13 @@ Set environment variables in the host's dashboard (Vite inlines them at build ti
 ### GitHub Pages (production)
 
 The site and the Mac app's model catalog are served from GitHub Pages at
-`https://witlet.qbatch.com`. `.github/workflows/deploy-pages.yml` builds and
+`https://witlet.lixul.com`. `.github/workflows/deploy-pages.yml` builds and
 deploys `dist/` on every push to `main`, and can be run by hand from the
 *Actions* tab.
 
 1. In the repository, open *Settings ▸ Pages* and set *Source* to **GitHub Actions**.
-2. Under *Custom domain*, enter `witlet.qbatch.com` and save. At the DNS provider for
-   `qbatch.com`, add a `CNAME` from `witlet` to `ali-mustafa-qbatch.github.io`.
+2. Under *Custom domain*, enter `witlet.lixul.com` and save. At the DNS provider for
+   `lixul.com`, add a `CNAME` from `witlet` to `ali-mustafa-qbatch.github.io`.
    No `CNAME` file is needed: Pages ignores it for sites deployed by a workflow.
 3. Once the certificate is issued, turn on **Enforce HTTPS**.
 
@@ -141,7 +141,7 @@ with `304 Not Modified`, and a new catalog reaches everyone within minutes.
 
 ### Model catalog (`public/catalog/v1.json`)
 
-The Witlet Mac app reads `https://witlet.qbatch.com/catalog/v1.json` at most once a day. It only uses the file if its signature matches a key built into the app. Otherwise it keeps its built-in catalog.
+The Witlet Mac app reads `https://witlet.lixul.com/catalog/v1.json` at most once a day. It only uses the file if its signature matches a key built into the app. Otherwise it keeps its built-in catalog.
 
 - **Never edit `v1.json` by hand.** Any change breaks the signature. Make it in the Mac app repo with `node Scripts/publish-catalog.mjs --key-id 2026-11`, then commit and push this repo.
 - **Never move or rename it.** Every shipped copy of the app keeps reading that exact path. A future format would go next to it as `v2.json`.
@@ -153,8 +153,8 @@ The Witlet Mac app reads `https://witlet.qbatch.com/catalog/v1.json` at most onc
   directory `dist`. Both apply `public/_headers` (the catalog's content type and a
   5-minute cache).
 
-Whichever host serves `witlet.qbatch.com`, the catalog must stay at
-`https://witlet.qbatch.com/catalog/v1.json`, and the policy pages at their `.html`
+Whichever host serves `witlet.lixul.com`, the catalog must stay at
+`https://witlet.lixul.com/catalog/v1.json`, and the policy pages at their `.html`
 addresses: shipped copies of the Mac app open them.
 
 ## Design and motion

@@ -12,7 +12,7 @@ export const config = {
   copyrightYear: 2026,
 
   // Absolute production URL, used for canonical and Open Graph tags.
-  siteUrl: 'https://witlet.qbatch.com',
+  siteUrl: 'https://witlet.lixul.com',
 
   /** Shown on the privacy policy, terms and support page. */
   policyUpdated: '24 November 2026',
