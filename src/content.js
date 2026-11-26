@@ -5,8 +5,10 @@
  *
  * House rules: short, warm, plain English. No jargon (see README).
  * The product story matches the Mac app: five setup steps, then an
- * offline chat. There is no side-by-side test drive, no account, and
- * no free/pro split inside the app.
+ * offline chat, plus Quick Ask from other apps. There is no side-by-side
+ * test drive, no account, and no free/pro split inside the app.
+ * When the app gains a feature, check docs/CHANGELOG.md in the Mac app
+ * repo against the included items, FAQ, policies and support answers.
  */
 import { config } from './config.js';
 
@@ -26,7 +28,7 @@ export const jobs = [
 export const content = {
   meta: {
     title: `${name} — Private AI that just works on your Mac`,
-    description: `${name} checks your Mac, shows which AI models fit the job you want, and sets one up. Chat offline. No account. Dictation and pictures stay on your Mac.`,
+    description: `${name} checks your Mac, shows which AI models fit the job you want, and sets one up. Chat offline, or ask from any app. No account. Documents, pictures and dictation stay on your Mac.`,
     ogImage: '/og-image.png',
     ogImageAlt: `${name}: private AI that just works on the Mac you already own.`,
   },
@@ -200,7 +202,7 @@ export const content = {
       { icon: 'gauge', title: 'A fit you can read', text: 'Excellent fit, Good fit, Poor fit, or Won’t run. Speed in words, such as Faster than you read.' },
       { icon: 'proof', title: 'Never freezes your Mac', text: 'It won’t load a model your Mac can’t handle, or one that doesn’t fit in the memory free right now.' },
       { icon: 'speech', title: 'Plain language', text: 'No model names or jargon unless you turn on Technical details.' },
-      { icon: 'lock', title: 'Truly offline and private', text: 'No account and no analytics. Chats, pictures and dictation stay on your Mac.' },
+      { icon: 'lock', title: 'Truly offline and private', text: 'No account and no analytics. Chats, documents, pictures and dictation stay on your Mac.' },
       { icon: 'rise', title: 'Switch any time', text: 'Download another model in the background, or remove one. Your chats stay either way.' },
     ],
   },
@@ -212,10 +214,13 @@ export const content = {
     items: [
       { icon: 'mic', title: 'Dictate on this Mac', text: 'Speak into the message box. The words stay here, and nothing is sent until you send the message.' },
       { icon: 'photo', title: 'Show it pictures', text: 'With a model that can see, attach, paste or drop up to four pictures. They’re shrunk on your Mac.' },
-      { icon: 'chats', title: 'Keep several chats', text: 'A sidebar for your conversations, with search, rename and delete. New chat is Command-N.' },
+      { icon: 'doc', title: 'Ask about documents', text: 'Attach PDFs, Word files, spreadsheets and more. They’re read on your Mac, and answers point to the page they come from.' },
+      { icon: 'chats', title: 'Keep several chats', text: 'A sidebar with search, rename and delete. Pin the ones you use most, and archive the rest without deleting them.' },
+      { icon: 'bolt', title: 'Ask from any app', text: 'Select text and choose Ask Witlet from the Services menu, or press Control-Option-Command-Space. A small panel answers over the app you’re in.' },
+      { icon: 'share', title: 'Share and export', text: 'Save or share a chat as plain text, Markdown or a PDF. Export All Chats keeps a copy of everything in one file.' },
       { icon: 'keys', title: 'Shortcuts for the rest', text: 'A command palette with Command-K, and every shortcut listed with Command-slash.' },
       { icon: 'meter', title: 'See when a chat fills up', text: 'A small meter shows how much of the conversation the model can still hold.' },
-      { icon: 'models', title: 'Manage models', text: 'See type, fit, memory and size. Filter to what’s downloaded. Remove one when you want the space back.' },
+      { icon: 'models', title: 'Manage models', text: 'See type, fit, memory, size and licence. Filter to what’s downloaded. Remove one when you want the space back.' },
     ],
   },
 
@@ -223,7 +228,7 @@ export const content = {
     eyebrow: 'Privacy',
     title: 'Turn off the internet. Keep going.',
     text: 'After the model download, chat runs on your Mac. Your words never leave it. Try the switch.',
-    points: ['No account', 'Chats, pictures and dictation stay here', 'Works in airplane mode'],
+    points: ['No account', 'Chats, documents, pictures and dictation stay here', 'Works in airplane mode'],
     policyLabel: 'Read the privacy policy',
     toggle: 'Airplane mode',
     statusOn: 'Airplane mode is on. It’s still answering.',
@@ -290,8 +295,12 @@ export const content = {
         a: 'Open Manage Models and download another. It can arrive in the background, then the chat switches to it. Removing a model deletes its files after you confirm. Your chats are kept.',
       },
       {
+        q: 'Can I use it without switching apps?',
+        a: `Yes. Select text in Mail, Safari or any other app and choose Services ▸ Ask Witlet or Summarise with Witlet. Or press Control-Option-Command-Space from anywhere. A small panel opens over the app you’re in. Nothing in it is saved unless you choose Continue in ${name}.`,
+      },
+      {
         q: 'Do you collect my data?',
-        a: `No. There’s no account and no analytics. Conversations, pictures and dictation stay on your Mac. The privacy policy has the full account, including the daily model-list check.`,
+        a: `No. There’s no account and no analytics. Conversations, documents, pictures and dictation stay on your Mac. The privacy policy has the full account, including the daily model-list check.`,
       },
     ],
   },
@@ -325,7 +334,7 @@ export const content = {
     privacy: {
       path: config.links.privacy,
       metaTitle: `Privacy policy — ${name}`,
-      metaDescription: `What ${name} for Mac does with your information: chats, pictures and dictation stay on your Mac. No account and no analytics.`,
+      metaDescription: `What ${name} for Mac does with your information: chats, documents, pictures and dictation stay on your Mac. No account and no analytics.`,
       eyebrow: 'Privacy policy',
       title: `How ${name} handles your information`,
       updated: `Last updated ${config.policyUpdated}`,
@@ -340,7 +349,7 @@ export const content = {
         {
           heading: 'What the app does not collect',
           paragraphs: [
-            'The app’s privacy manifest lists no collected data and no tracking. We don’t receive your conversations, the pictures you attach, the audio from dictation, your Mac’s name, or a profile of you.',
+            'The app’s privacy manifest lists no collected data and no tracking. We don’t receive your conversations, the documents or pictures you attach, text you send from other apps, the audio from dictation, your Mac’s name, or a profile of you.',
             'There is no sign-in. Nothing in the app is sent to an advertising or analytics service, because the app doesn’t have one.',
           ],
         },
@@ -350,9 +359,24 @@ export const content = {
             'These stay in the app’s own storage on your Mac, and they are not synced by us:',
           ],
           list: [
-            'Your chats and the messages in them, including any pictures you attached. Pictures are shrunk on your Mac before they’re saved with the chat.',
-            'How far you got in setup, and whether you turned Technical details on.',
+            'Your chats and the messages in them, including any pictures you attached, and which chats you pinned or archived. Pictures are shrunk on your Mac before they’re saved with the chat.',
+            'The text read from documents you attached. The chat keeps that text, not the file itself.',
+            'How far you got in setup, whether you turned Technical details on, your Quick Ask settings, and the model licences you accepted.',
             'The model files you downloaded.',
+          ],
+        },
+        {
+          heading: 'Asking from other apps',
+          paragraphs: [
+            `When you choose Ask ${name}, Summarise with ${name} or Ask ${name} About Files from the Services menu, macOS hands the selected text or files to ${name} on your Mac. They are read there and never sent anywhere. Using the Services menu and the Quick Ask shortcut needs no extra permissions.`,
+            `The Quick Ask panel isn’t saved. It is cleared after 10 minutes hidden, unless you choose Continue in ${name}, which turns it into a saved chat on your Mac.`,
+          ],
+        },
+        {
+          heading: 'Sharing and exporting',
+          paragraphs: [
+            `${name} only shares or exports a chat when you ask it to. Export saves a file where you choose. Share hands the chat to the app or person you pick in the macOS share menu, and what happens next is up to that app. Export All Chats saves every chat in one file on your Mac. We don’t receive any of these.`,
+            `Delete All Data, in Settings ▸ About, deletes every chat, model, setting and accepted licence from this Mac. It offers to export your chats first.`,
           ],
         },
         {
@@ -371,6 +395,12 @@ export const content = {
           list: [
             `Downloading the model you chose, and any model you add later. The files come from Hugging Face, pinned to a fixed version and checked against stored checksums. That connection is what delivers the files. ${name} doesn’t add an account or an analytics payload to it. The host that serves the files can see a normal download request, including an IP address, the way any download works.`,
             `Once a day at most, if you are online, a small signed list of models from ${config.siteUrl.replace('https://', '')}. The request sends no cookies and nothing about you or your Mac. The user agent is the word “${name}”. If the list is missing, unsigned or older than the one the app already has, the app keeps what it has and says nothing.`,
+          ],
+        },
+        {
+          heading: 'Links in the app',
+          paragraphs: [
+            `The privacy policy, terms of use and support links in ${name} open in your own browser. Share ${name} shares its App Store page, and Rate on the Mac App Store opens the store’s review form. The app doesn’t fetch these pages itself.`,
           ],
         },
         {
@@ -426,14 +456,15 @@ export const content = {
         {
           heading: 'Your chats stay yours',
           paragraphs: [
-            'Conversations, attached pictures and dictated text are stored on your Mac, not by us. You are responsible for them, including anything confidential you type, and for your own backups. Removing the app, or removing its data, can delete them.',
+            'Conversations, the text of attached documents, attached pictures and dictated text are stored on your Mac, not by us. You are responsible for them, including anything confidential you type, and for your own backups. Export All Chats can save a copy. Removing the app, or removing its data, can delete them.',
+            'When you share or export a chat, the file or message goes where you send it. Once it leaves the app, it is up to you and the app you shared it with.',
             'Dictation writes text into the message box. It does not send audio off your Mac. Pictures you attach are prepared on your Mac and saved with the chat.',
           ],
         },
         {
           heading: 'The models',
           paragraphs: [
-            'The AI models are made by other people. Each one has its own license. Downloading and using a model means you follow that license. We don’t give you extra rights to the model files.',
+            'The AI models are made by other people. Each one has its own license, linked from the model list. Some, such as Llama and Gemma models, ask you to accept their license and acceptable use policy before they download. Downloading and using a model means you follow that license. We don’t give you extra rights to the model files.',
             'A model can use a lot of disk space and memory. The app refuses to load one that doesn’t fit, but you still choose what to download, and you can remove a model when you want the space back.',
           ],
         },
@@ -475,7 +506,7 @@ export const content = {
     support: {
       path: config.links.support,
       metaTitle: `Support — ${name}`,
-      metaDescription: `Answers for ${name} on the Mac: setup, offline chat, dictation, pictures, models, and privacy.`,
+      metaDescription: `Answers for ${name} on the Mac: setup, offline chat, documents, asking from other apps, sharing and exporting, models, and privacy.`,
       eyebrow: 'Support',
       title: `Help with ${name}`,
       updated: `Last updated ${config.policyUpdated}`,
@@ -506,7 +537,7 @@ export const content = {
         },
         {
           q: 'What if I want a different model later?',
-          a: 'Use Manage Models in the model menu, or File ▸ Manage Models. A new model downloads in the background while you keep chatting, then the chat can switch to it. Only one model is loaded at a time. To free space, remove a model and confirm. Its files are deleted and the app forgets it. Your chats stay. If it was the model you were using, the chat moves back to the previous one.',
+          a: 'Use Manage Models in the model menu, or File ▸ Manage Models. A new model downloads in the background while you keep chatting, then the chat can switch to it. Only one model is loaded at a time. Llama and Gemma models ask you to accept their license first, once per license. To free space, remove a model and confirm. Its files are deleted and the app forgets it. Your chats stay. If it was the model you were using, the chat moves back to the previous one.',
         },
         {
           q: 'Will a model freeze my Mac?',
@@ -530,15 +561,27 @@ export const content = {
         },
         {
           q: 'What can I do in the chat?',
-          a: 'Several chats, with search (Command-F), rename, and delete. Command-K opens the command palette. Command-slash lists every shortcut. Return sends, Shift-Return starts a new line, Command-period stops an answer, Command-R regenerates, and Shift-Command-C copies the last answer. Answers use formatted text, and code is highlighted. A small meter shows how full the conversation is. Answers can be wrong. Check anything important.',
+          a: 'Several chats, with search (Command-F), rename, and delete. Command-K opens the command palette. Command-slash lists every shortcut. Return sends, Shift-Return starts a new line, Command-period stops an answer, Command-R regenerates, and Shift-Command-C copies the last answer. Command-plus and Command-minus make the text bigger or smaller. Answers use formatted text, and code is highlighted. A small meter shows how full the conversation is. Answers can be wrong. Check anything important.',
+        },
+        {
+          q: 'How do I pin or archive a chat?',
+          a: 'Control-click a chat in the sidebar, or use its ⋯ menu or the Chat menu. Pin (Control-Command-P) keeps it in Pinned at the top of the sidebar. Archive (Control-Command-A) moves it into the folded Archived section at the bottom without deleting it. Command-Z in the chat list undoes either. Search still finds archived chats, and a new message brings one back.',
+        },
+        {
+          q: 'How do I ask from another app?',
+          a: `Select text in any app, Control-click it and choose Services ▸ Ask ${name} or Summarise with ${name}. In the Finder, select files and choose Ask ${name} About Files. Or press Control-Option-Command-Space from anywhere, even over full-screen apps. A small panel opens with quick actions: Summarise, Explain, Key points and Draft a reply. Nothing in the panel is saved unless you choose Continue in ${name}. Change or turn off the shortcut in ${name} ▸ Settings ▸ Quick Ask. No extra permissions are needed.`,
+        },
+        {
+          q: 'Can I save or share a chat?',
+          a: 'Yes. Use Share or Export in a chat’s menu in the sidebar, the Share button in the chat’s toolbar, or Chat ▸ Export Chat. Choose plain text, Markdown or PDF. Shift-Command-E exports as Markdown. To keep a copy of everything, choose File ▸ Export All Chats. It saves every chat, with its pictures and the text of its documents, in one file.',
         },
         {
           q: 'Where are my chats kept?',
-          a: 'On this Mac, inside the app. They are not uploaded and not synced by us. Deleting a chat removes it from the app. Settings ▸ About ▸ Delete All Data deletes every chat, downloaded model and setting at once.',
+          a: 'On this Mac, inside the app. They are not uploaded and not synced by us. Deleting a chat removes it from the app. Settings ▸ About ▸ Delete All Data deletes every chat, downloaded model and setting at once. It offers to export your chats first.',
         },
         {
           q: 'Do you collect my data?',
-          a: 'No account, no analytics, and the privacy manifest lists nothing collected. Chats, pictures and dictation audio stay on your Mac. See the privacy policy for the model download and the daily model-list check.',
+          a: 'No account, no analytics, and the privacy manifest lists nothing collected. Chats, documents, pictures, text you send from other apps and dictation audio stay on your Mac. See the privacy policy for the model download and the daily model-list check.',
         },
         {
           q: 'How is this different from an online chatbot?',

@@ -1,8 +1,9 @@
 # Witlet — landing page
 
 Marketing site for **Witlet** (**Witlet: Private AI Assistant** on the Mac App Store), a native macOS app. It checks the Mac, shows
-which private offline models fit the job you want, and sets one up. Chat,
-dictation and pictures stay on the Mac. There is no account and no in-app
+which private offline models fit the job you want, and sets one up. Chats,
+documents, pictures and dictation stay on the Mac, and Quick Ask works from
+any app. There is no account and no in-app
 subscription.
 
 Vite + vanilla JavaScript. One runtime dependency: `gsap` (ScrollTrigger included).

@@ -15,7 +15,7 @@ export const config = {
   siteUrl: 'https://witlet.lixul.com',
 
   /** Shown on the privacy policy, terms and support page. */
-  policyUpdated: '24 November 2026',
+  policyUpdated: '26 November 2026',
 
   requirements: {
     chip: 'Apple silicon (M1 or newer)',
@@ -27,8 +27,9 @@ export const config = {
   /**
    * Mac App Store listing. Leave empty until the listing is live;
    * the download section then tells people to search the store.
+   * Same ID as AppLinks.appStoreID in the Mac app.
    */
-  appStore: '',
+  appStore: 'https://apps.apple.com/app/id6839100488',
 
   /**
    * Public support address. Shown on the support page when set.

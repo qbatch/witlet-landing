@@ -19,6 +19,9 @@ const PILLARS = {
   keys: '<rect x="3" y="6" width="18" height="12" rx="2" pathLength="1"/><path d="M7 10h.01M12 10h.01M17 10h.01M8 14h8" pathLength="1"/>',
   meter: '<circle cx="12" cy="12" r="8" pathLength="1"/><path d="M12 12.5V7.5" pathLength="1"/>',
   models: '<path d="M4 7.5h16M4 12h16M4 16.5h10" pathLength="1"/>',
+  doc: '<path d="M6.5 4.5A1.5 1.5 0 0 1 8 3h6l4.5 4.5v12A1.5 1.5 0 0 1 17 21H8a1.5 1.5 0 0 1-1.5-1.5z" pathLength="1"/><path d="M14 3v4.5h4.5M9.5 12.5h5M9.5 16h5" pathLength="1"/>',
+  bolt: '<path d="M13.5 3L5.5 13.5h6l-1 7.5 8-10.5h-6z" pathLength="1"/>',
+  share: '<path d="M12 14.5V3.5M8 7.5l4-4 4 4" pathLength="1"/><path d="M8.5 10.5H7A1.5 1.5 0 0 0 5.5 12v7A1.5 1.5 0 0 0 7 20.5h10a1.5 1.5 0 0 0 1.5-1.5v-7A1.5 1.5 0 0 0 17 10.5h-1.5" pathLength="1"/>',
 };
 
 export const icon = {
