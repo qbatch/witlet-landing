@@ -2101,21 +2101,21 @@
   font-weight: 600;
 }
 
-.faq-more a,
-.privacy-more a,
-.page-related a,
-.prose a,
-.download-card a {
+.faq-more a:not(.btn),
+.privacy-more a:not(.btn),
+.page-related a:not(.btn),
+.prose a:not(.btn),
+.download-card a:not(.btn) {
   color: var(--accent);
   font-weight: 650;
   text-decoration: none;
 }
 
-.faq-more a:hover,
-.privacy-more a:hover,
-.page-related a:hover,
-.prose a:hover,
-.download-card a:hover {
+.faq-more a:not(.btn):hover,
+.privacy-more a:not(.btn):hover,
+.page-related a:not(.btn):hover,
+.prose a:not(.btn):hover,
+.download-card a:not(.btn):hover {
   text-decoration: underline;
 }
 
